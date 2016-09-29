@@ -1,0 +1,12 @@
+[
+{
+  "directory": "C:/Users/Romain Loury/Documents/plt",
+  "command": "C:/MinGW/bin/g++.exe    @CMakeFiles/run.dir/includes_CXX.rsp  -Wall -std=c++11 -pthread -g -O3 -DNDEBUG   -std=gnu++11 -o CMakeFiles/run.dir/src/main.cpp.obj -c \"C:/Users/Romain Loury/Documents/plt/src/main.cpp\"",
+  "file": "C:/Users/Romain Loury/Documents/plt/src/main.cpp"
+},
+{
+  "directory": "C:/Users/Romain Loury/Documents/plt",
+  "command": "C:/MinGW/bin/g++.exe    @CMakeFiles/run.dir/includes_CXX.rsp  -Wall -std=c++11 -pthread -g -O3 -DNDEBUG   -std=gnu++11 -o CMakeFiles/run.dir/src/state/Exemple.cpp.obj -c \"C:/Users/Romain Loury/Documents/plt/src/state/Exemple.cpp\"",
+  "file": "C:/Users/Romain Loury/Documents/plt/src/state/Exemple.cpp"
+}
+]
