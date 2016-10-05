@@ -19,7 +19,6 @@ namespace state {
   public:
     Gang ();
     ~Gang ();
-    Gang* const clone ();
     void set_nb_card_gang (int nb_card_gang);
     int get_nb_card_gang ();
     void set_money (int money);

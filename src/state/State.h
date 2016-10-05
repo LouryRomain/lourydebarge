@@ -23,7 +23,6 @@ namespace state {
   public:
     State ();
     ~State ();
-    State* const clone ();
     int get_nb_territory ();
     void set_nb_territory (int nb_territory);
     int get_nb_gang ();

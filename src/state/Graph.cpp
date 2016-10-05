@@ -4,4 +4,29 @@
  * and open the template in the editor.
  */
 
-#include "Graph.h"
+#include "state.hpp"
+
+namespace state {
+    
+    Graph::Graph (){
+    }
+    Graph::~Graph (){
+    }
+    
+    
+    void Graph::add_summit (Territory* summit){
+    }
+    
+    
+    void Graph::delete_summit (int ID){
+    }
+    
+    
+    void Graph::delete_adjacent (int ID_1, int ID_2){
+    }
+    
+    
+    void Graph::add_adjacent (Adjacent* adjacent){
+    }
+    
+  };

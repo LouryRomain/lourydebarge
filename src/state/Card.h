@@ -23,7 +23,6 @@ namespace state {
   public:
     Card ();
     ~Card ();
-    Card* const clone ();
     char get_type ();
     void set_type (char type);
     int get_nb_card_owned ();

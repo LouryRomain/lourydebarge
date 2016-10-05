@@ -4,4 +4,27 @@
  * and open the template in the editor.
  */
 
-#include "State.h"
+#include "state.hpp"
+
+namespace state {
+
+    State::State (){
+    }
+    
+    State::~State (){
+    }
+    
+    int State::get_nb_territory (){
+        
+    }
+    void State::set_nb_territory (int nb_territory){
+        
+    }
+    int State::get_nb_gang (){
+        
+    }
+    
+    void State::set_nb_gang (int nb_gang){
+        
+    }
+  };

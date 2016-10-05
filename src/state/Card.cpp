@@ -5,6 +5,34 @@
  */
 
 
-#include "Card.h"
+#include "state.hpp"
+
+namespace state {
+
+    Card::Card (){
+    }
+    
+    Card::~Card (){
+    }
+    
+    char Card::get_type (){
+    }
+    
+    void Card::set_type (char type){
+    }
+    
+    int Card::get_nb_card_owned (){
+    }
+    
+    
+    void Card::set_nb_card_owned (int nb_card_owned){
+    }
+    
+    void Card::set_effect (int effect){
+    }
+    
+    int Card::get_effect (){
+    }
+  };
 
 

@@ -21,9 +21,10 @@ namespace state {
   public:
     Adjacent (Territory territory_1, Territory territory_2);
     ~Adjacent ();
-    Adjacent* const clone ();
     Territory get_territory_1 ();
     Territory get_territory_2 ();
+    void set_territory_1 (Territory territory_1);
+    void set_territory_2 (Territory territory_2);
   };
 
 };

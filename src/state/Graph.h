@@ -25,7 +25,6 @@ namespace state {
   public:
     Graph ();
     ~Graph ();
-    Graph* const clone ();
     void add_summit (Territory* summit);
     void delete_summit (int ID);
     void delete_adjacent (int ID_1, int ID_2);

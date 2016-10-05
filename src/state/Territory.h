@@ -27,7 +27,6 @@ namespace state {
   public:
     Territory ();
     ~Territory ();
-    Territory* const clone ();
     int get_nb_unit ();
     void set_nb_unit (int nb_unit);
     std::string get_gang ();
