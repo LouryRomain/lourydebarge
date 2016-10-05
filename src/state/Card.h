@@ -25,10 +25,10 @@ namespace state {
     ~Card ();
     Card* const clone ();
     char get_type ();
-    set_type (char type);
+    void set_type (char type);
     int get_nb_card_owned ();
-    set_nb_card_owned (int nb_card_owned);
-    set_effect (int effect);
+    void set_nb_card_owned (int nb_card_owned);
+    void set_effect (int effect);
     int get_effect ();
   };
 

@@ -5,8 +5,8 @@
 #include <vector>
 
 namespace state {
-  class Adjacent;
   class Territory;
+  class Adjacent;
 }
 
 #include "Adjacent.h"
@@ -19,17 +19,17 @@ namespace state {
     // Associations
     // Attributes
   private:
-    std::vector<Summit*> list_summit;
+    std::vector<Territory*> list_summit;
     std::vector<Adjacent*> list_adjacent;
     // Operations
   public:
     Graph ();
     ~Graph ();
     Graph* const clone ();
-    add_summit (Territory* summit);
-    delete_summit (int ID);
-    delete_adjacent (int ID_1, int ID_2);
-    add_adjacent (Adjacent* adjacent);
+    void add_summit (Territory* summit);
+    void delete_summit (int ID);
+    void delete_adjacent (int ID_1, int ID_2);
+    void add_adjacent (Adjacent* adjacent);
   };
 
 };

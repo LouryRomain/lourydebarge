@@ -17,7 +17,7 @@ namespace state {
     // Attributes
   public:
     int Mode;
-     nb_territory;
+    int nb_territory;
     int nb_gang;
     // Operations
   public:
@@ -25,9 +25,9 @@ namespace state {
     ~State ();
     State* const clone ();
     int get_nb_territory ();
-    set_nb_territory (int nb_territory);
+    void set_nb_territory (int nb_territory);
     int get_nb_gang ();
-    set_nb_gang (int nb_gang);
+    void set_nb_gang (int nb_gang);
   };
 
 };

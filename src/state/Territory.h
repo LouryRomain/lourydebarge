@@ -29,13 +29,13 @@ namespace state {
     ~Territory ();
     Territory* const clone ();
     int get_nb_unit ();
-    set_nb_unit (int nb_unit);
+    void set_nb_unit (int nb_unit);
     std::string get_gang ();
-    set_gang (string gang);
+    void set_gang (std::string gang);
     int get_ID ();
-    set_ID (int ID);
+    void set_ID (int ID);
     bool get_QG ();
-    set_QG (bool boolean_QG);
+    void set_QG (bool boolean_QG);
   };
 
 };

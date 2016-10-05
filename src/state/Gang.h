@@ -20,16 +20,16 @@ namespace state {
     Gang ();
     ~Gang ();
     Gang* const clone ();
-    set_nb_card_gang (int nb_card_gang);
+    void set_nb_card_gang (int nb_card_gang);
     int get_nb_card_gang ();
-    set_money (int money);
+    void set_money (int money);
     int get_money ();
-    set_alive (bool alive);
+    void set_alive (bool alive);
     bool get_alive ();
-    set_nb_unit (int nb_unit);
+    void set_nb_unit (int nb_unit);
     int get_unit ();
     std::string get_name ();
-    set_name (std::string name);
+    void set_name (std::string name);
   };
 
 };
