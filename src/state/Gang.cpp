@@ -5,11 +5,16 @@
  */
 
 
-#include "state.hpp"
+#include "Gang.h"
 
 namespace state {
 
     Gang::Gang (){
+        int money;
+        int unit;
+        int nb_card_all;
+        bool alive;
+        std::string name ;
     }
     
    
