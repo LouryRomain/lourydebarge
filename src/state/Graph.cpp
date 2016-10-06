@@ -10,17 +10,15 @@
 
 namespace state {
     
-    Graph::Graph (){
+    Graph::Graph (Territory* summit,Adjacent* adjacent){
+        
+        list_summit.push_back(summit);
+        list_adjacent.push_back(adjacent);
+        
     }
     Graph::~Graph (){
-         for(int unsigned i=0;i<list_summit.size();i++)
-            {
-                delete list_summit[i];
-            }
-        for(int unsigned i=0;i<list_adjacent.size();i++)
-            {
-                delete list_adjacent[i];
-            }
+while(list_summit[0]) delete list_summit[0];
+while(list_adjacent[0]) delete list_adjacent[0];
         }
     
     
@@ -30,14 +28,12 @@ namespace state {
     }
     
     
-    void Graph::delete_summit (int ID){
-       
-       
-        }
+    void Graph::delete_summit (Territory* summit){
+    }
     
     
     
-    void Graph::delete_adjacent (int ID_1, int ID_2){
+    void Graph::delete_adjacent (Territory* territory_1,Territory* territory_2){
     }
     
     

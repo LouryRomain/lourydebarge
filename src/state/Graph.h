@@ -23,11 +23,11 @@ namespace state {
     std::vector<Adjacent*> list_adjacent;
     // Operations
   public:
-    Graph ();
+    Graph (Territory* summit, Adjacent* adjacent);
     ~Graph ();
     void add_summit (Territory* summit);
-    void delete_summit (int ID);
-    void delete_adjacent (int ID_1, int ID_2);
+    void delete_summit (Territory* summit);
+    void delete_adjacent (Territory* territory_1, Territory* territory_2);
     void add_adjacent (Adjacent* adjacent);
   };
 
