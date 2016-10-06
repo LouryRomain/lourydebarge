@@ -21,7 +21,7 @@ namespace state {
   private:
     int nb_unit;
     std::string gang;
-    int Id;
+    int ID;
     bool QG;
     // Operations
   public:

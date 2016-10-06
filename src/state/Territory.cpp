@@ -18,31 +18,34 @@ namespace state {
     }
     
     int Territory::get_nb_unit (){
+        return nb_unit;
         
     }
     
     void Territory::set_nb_unit (int nb_unit){
-    
+        this->nb_unit = nb_unit;
     }
     
     std::string Territory::get_gang (){
-        
+        return gang;
     }
     
     void Territory::set_gang (std::string gang){
-        
+        this->gang = gang;
     }
     int Territory::get_ID (){
+        return ID;
     }
     
     void Territory::set_ID (int ID){
-        
+        this->ID = ID;
     }
     bool Territory::get_QG (){
-        
+        return QG;
     }
     
     void Territory::set_QG (bool boolean_QG){
+        this->QG = QG;
     }
     
   };

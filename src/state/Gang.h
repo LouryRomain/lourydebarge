@@ -11,8 +11,8 @@ namespace state {
     // Attributes
   private:
     int money;
-    int unit;
-    int nb_card_all;
+    int nb_unit;
+    int nb_card_gang;
     bool alive;
     std::string name;
     // Operations
@@ -26,7 +26,7 @@ namespace state {
     void set_alive (bool alive);
     bool get_alive ();
     void set_nb_unit (int nb_unit);
-    int get_unit ();
+    int get_nb_unit ();
     std::string get_name ();
     void set_name (std::string name);
   };
