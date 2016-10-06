@@ -31,11 +31,6 @@ namespace state {
     
     
     void Graph::delete_summit (int ID){
-     
-        for(int unsigned i=0;i<list_summit.size();i++)
-            {
-                delete list_summit[i];
-            }
        
        
         }
