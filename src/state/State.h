@@ -2,6 +2,7 @@
 #ifndef STATE__STATE__H
 #define STATE__STATE__H
 
+#include <SFML/Graphics.hpp>
 
 namespace state {
   class Graph;
@@ -19,6 +20,7 @@ namespace state {
     int Mode;
     int nb_territory;
     int nb_gang;
+    sf::Image image;
     // Operations
   public:
     State ();

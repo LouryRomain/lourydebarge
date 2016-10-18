@@ -1,4 +1,4 @@
-# Install script for directory: /home/gosselin/archives/cours/Cours/Projet Logiciel Transversal/plt.git/dia2code
+# Install script for directory: /home/utilisateur/Documents/PLT/dia2code
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/gosselin/archives/cours/Cours/Projet Logiciel Transversal/plt.git/dia2code/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/utilisateur/Documents/PLT/dia2code/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
