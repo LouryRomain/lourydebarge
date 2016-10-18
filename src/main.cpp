@@ -2,9 +2,8 @@
 #endif 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <state/State.h>
-#include <state/Adjacent.h>
-#include <state/Card.h>
+#include <state.h>
+#include <renderer/Texture.h>
 
 
 
@@ -77,7 +76,7 @@ private:
 
 ////All the time 
 //plage commune
-sf::Texture plage_commune;
+renderer::Texture plage_commune;
 sf::Sprite sprite_plage_commune;
 std::string plage_commune_path="/home/utilisateur/Documents/PLT/res/autres/plage_commune.png";
 int plage_commune_width=235;
@@ -102,12 +101,12 @@ bool Update_boutique=true;
 
 /////Mode0
 //bacground
-sf::Texture background;
+renderer::Texture background;
 sf::Sprite sprite_background;
 std::string background_path="/home/utilisateur/Documents/PLT/res/surfaces/background.png";
 
 //bouton add
-sf::Texture button;
+renderer::Texture button;
 sf::Sprite sprite_button_add;
 sf::Sprite sprite_button_minus;
 sf::Vector2i anim_button_add(1,0);
@@ -121,7 +120,7 @@ sf::Vector2f offset_button_origin(8,10);
 sf::Vector2f offset_button_exte(8,5);
 
 //bouton ok
-sf::Texture button_ok;
+renderer::Texture button_ok;
 sf::Sprite sprite_button_ok_A;
 sf::Sprite sprite_button_ok_B;
 sf::Sprite sprite_button_ok_C;
@@ -138,7 +137,7 @@ float decalage_nombre_ok=15;
 
 
 //carte verso
-sf::Texture carte_verso;
+renderer::Texture carte_verso;
 sf::Sprite sprite_carte_verso_A;
 sf::Sprite sprite_carte_verso_B;
 sf::Sprite sprite_carte_verso_C;
@@ -150,7 +149,7 @@ float carte_verso_scale=0.75f;
 sf::Vector2f carte_verso_dim(261,406);
 
 //chiffre
-sf::Texture alphabet;
+renderer::Texture alphabet;
 sf::Sprite sprite_chiffre_unite;
 sf::Sprite sprite_chiffre_dizaine;
 sf::Sprite sprite_prix_unite;
@@ -169,7 +168,7 @@ int ajustement_sprite_chiffre=2;
 
 //dragon
 int speed=25;
-sf::Texture perso;
+renderer::Texture perso;
 sf::Sprite sprite_perso;
 enum Dir{Down,Left,Right,Up};
 sf::Vector2i anim_dragon(0,Down);
@@ -177,19 +176,19 @@ bool Update_dragon=false;
 sf::Vector2f perso_pos(window_width/2,window_heigth/2);
 
 //logo boutique
-sf::Texture logo_boutique;
+renderer::Texture logo_boutique;
 sf::Sprite sprite_logo_boutique;
 std::string logo_boutique_path="/home/utilisateur/Documents/PLT/res/autres/logo.png";
 
 //money
-sf::Texture money;
+renderer::Texture money;
 sf::Sprite sprite_money;
 std::string money_path="/home/utilisateur/Documents/PLT/res/autres/money.png";
 float money_scale=0.75f;
 sf::Vector2f pos_money(630,100);
 
 //plage carte
-sf::Texture plage_carte;
+renderer::Texture plage_carte;
 sf::Sprite sprite_plage_carte_A;
 sf::Sprite sprite_plage_carte_B;
 sf::Sprite sprite_plage_carte_C;
@@ -201,7 +200,7 @@ sf::Vector2f plage_carte_dim(228,76);
 
 
 //soldat
-sf::Texture soldat;
+renderer::Texture soldat;
 sf::Sprite sprite_soldat;
 sf::Vector2i anim_soldat(0,0);
 float homme_scale=1.5f;
@@ -225,7 +224,7 @@ int thickness_rectangle=3;
 sf::Vector2f minimap_scale(0.25f,0.25f);
 
 //plage menu
-sf::Texture plage_menu;
+renderer::Texture plage_menu;
 sf::Sprite sprite_plage_menu;
 sf::Vector2i anim_plage_menu(1,0);
 std::string plage_menu_path="/home/utilisateur/Documents/PLT/res/autres/plage_menu.png";
@@ -249,7 +248,7 @@ sf::Vector2u tile_dim(28,28);
 TileMap Background;
 
 //tour 
-sf::Texture tour;
+renderer::Texture tour;
 sf::Sprite sprite_tour;
 std::string tour_path="/home/utilisateur/Documents/PLT/res/tours/tours.png";
 sf::Vector2i tour_dim(68,68);
@@ -321,160 +320,82 @@ int main()
     window.setPosition(pos_window);
     window.setFramerateLimit(frame_fps_limit);
     
-            
-        
-    
-   
-    
-  
-  
-    
-    
     sprite_perso.setPosition(perso_pos);
      
-     if (!plage_commune.loadFromFile(plage_commune_path))
-    {
-        std::cout<<"Erreur chargement de plage commune"<< std::endl;
-    }
+     sprite_plage_commune=plage_commune.load_texture(plage_commune_path,plage_commune_pos);
     
-    sprite_plage_commune.setTexture(plage_commune);
-    sprite_plage_commune.setPosition(plage_commune_pos);
+    
      
     /////////////////////////////////Mode 0 ///////////////////////////////////////////
      sf::Clock time_soldat;
     
-     if (!background.loadFromFile(background_path))
-    {
-        std::cout<<"Erreur chargement de background"<< std::endl;
-    }
+    sprite_background=background.load_texture(background_path,sf::Vector2f(0,0));
     
-    sprite_background.setTexture(background);
-    
-    if (!money.loadFromFile(money_path))
-    {
-        std::cout<<"Erreur chargement de money"<< std::endl;
-    }
-    
-    sprite_money.setTexture(money);
-    sprite_money.setPosition(pos_money);
+    sprite_money=money.load_texture(money_path,pos_money);
     sprite_money.setScale(money_scale,money_scale);
     
    
     
-     if (!plage_carte.loadFromFile(plage_carte_path))
-    {
-        std::cout<<"Erreur chargement de plage carte"<< std::endl;
-    }
-    
-    sprite_plage_carte_A.setTexture(plage_carte);
-    sprite_plage_carte_A.setPosition(plage_carte_A_pos);
-    
-    sprite_plage_carte_B.setTexture(plage_carte);
-    sprite_plage_carte_B.setPosition(plage_carte_B_pos);
-    
-    sprite_plage_carte_C.setTexture(plage_carte);
-    sprite_plage_carte_C.setPosition(plage_carte_C_pos);
+     sprite_plage_carte_A=plage_carte.load_texture(plage_carte_path,plage_carte_A_pos);
+     sprite_plage_carte_B=plage_carte.load_texture(plage_carte_path,plage_carte_B_pos);
+     sprite_plage_carte_C=plage_carte.load_texture(plage_carte_path,plage_carte_C_pos);
     
     sprite_plage_carte_A.setTextureRect(sf::IntRect(plage_carte_dim.x*select_plage_carte_A.x,plage_carte_dim.y*select_plage_carte_A.y,plage_carte_dim.x,plage_carte_dim.y));
     sprite_plage_carte_B.setTextureRect(sf::IntRect(plage_carte_dim.x*select_plage_carte_B.x,select_plage_carte_B.y*plage_carte_dim.y,plage_carte_dim.x,plage_carte_dim.y));;
     sprite_plage_carte_C.setTextureRect(sf::IntRect(plage_carte_dim.x*select_plage_carte_C.x,select_plage_carte_C.y*plage_carte_dim.y,plage_carte_dim.x,plage_carte_dim.y));;
        
    
-    
-    if (!logo_boutique.loadFromFile(logo_boutique_path))
-    {
-        std::cout<<"Erreur chargement de logo boutique"<< std::endl;
-    }
-    
-    sprite_logo_boutique.setTexture(logo_boutique);
+    sprite_logo_boutique=logo_boutique.load_texture(logo_boutique_path,sf::Vector2f(0,0));
     
     
     
-    if (!carte_verso.loadFromFile(carte_verso_path))
-    {
-        std::cout<<"Erreur chargement de carte_verso"<< std::endl;
-    }
+     sprite_carte_verso_A=carte_verso.load_texture(carte_verso_path,carte_A_pos);
+      sprite_carte_verso_B=carte_verso.load_texture(carte_verso_path,carte_B_pos);
+       sprite_carte_verso_C=carte_verso.load_texture(carte_verso_path,carte_C_pos);
     
-    sprite_carte_verso_A.setTexture(carte_verso);
-    sprite_carte_verso_B.setTexture(carte_verso);
-    sprite_carte_verso_C.setTexture(carte_verso);
-    sprite_carte_verso_A.setPosition(carte_A_pos);
-    sprite_carte_verso_B.setPosition(carte_B_pos);
-    sprite_carte_verso_C.setPosition(carte_C_pos);
     sprite_carte_verso_A.scale(carte_verso_scale,carte_verso_scale);
     sprite_carte_verso_B.scale(carte_verso_scale,carte_verso_scale);
     sprite_carte_verso_C.scale(carte_verso_scale,carte_verso_scale);
     
-    if (!button.loadFromFile(button_path))
-    {
-        std::cout<<"Erreur chargement de boutton"<< std::endl;
-    }
-    
-    sprite_button_add.setTexture(button);
-    sprite_button_minus.setTexture(button);
-    sprite_button_add.setPosition(button_add_pos);
-    sprite_button_minus.setPosition(button_minus_pos);
-    sprite_button_add.scale(button_scale,button_scale);
+    sprite_button_add=button.load_texture(button_path,button_add_pos);
+      sprite_button_minus=button.load_texture(button_path,button_minus_pos);
+      sprite_button_add.scale(button_scale,button_scale);
     sprite_button_minus.scale(button_scale,button_scale);
   
+    sprite_button_ok_A=button_ok.load_texture(button_ok_path,button_ok_A_pos);
+    sprite_button_ok_B=button_ok.load_texture(button_ok_path,button_ok_B_pos);
+    sprite_button_ok_C=button_ok.load_texture(button_ok_path,button_ok_C_pos);
+    sprite_button_ok_compteur=button_ok.load_texture(button_ok_path,button_ok_compteur_pos);
     
-    if (!button_ok.loadFromFile(button_ok_path))
-    {
-        std::cout<<"Erreur chargement de boutton ok"<< std::endl;
-    }
     
-    sprite_button_ok_A.setTexture(button_ok);
-    sprite_button_ok_A.setPosition(button_ok_A_pos);
     sprite_button_ok_A.scale(1.5f,1.5f);
-  
-    sprite_button_ok_B.setTexture(button_ok);
-    sprite_button_ok_B.setPosition(button_ok_B_pos);
     sprite_button_ok_B.scale(button_ok_scale,button_ok_scale);
-    
-    sprite_button_ok_C.setTexture(button_ok);
-    sprite_button_ok_C.setPosition(button_ok_C_pos);
     sprite_button_ok_C.scale(button_ok_scale,button_ok_scale);
-    
-    sprite_button_ok_compteur.setTexture(button_ok);
-    sprite_button_ok_compteur.setPosition(button_ok_compteur_pos);
     sprite_button_ok_compteur.scale(button_ok_scale,button_ok_scale);
     
-    if (!soldat.loadFromFile(homme_path))//, sf::IntRect(0,0,96,96)))
-    {
-        std::cout<<"Erreur chargement du soldat"<< std::endl;
-    }
-   
-    sprite_soldat.setTexture(soldat);
-    sprite_soldat.setPosition(soldat_pos);
+    sprite_soldat=soldat.load_texture(homme_path,soldat_pos);
     sprite_soldat.setScale(homme_scale,homme_scale);
-    soldat.setSmooth(true);
     
+    sprite_chiffre_unite=alphabet.load_texture(chiffre_path,chiffre_nb_soldat_unite_pos);
+    sprite_chiffre_dizaine=alphabet.load_texture(chiffre_path,chiffre_nb_soldat_dizaine_pos);
+    sprite_prix_unite=alphabet.load_texture(chiffre_path,prix_nb_soldat_unite_pos);
+    sprite_prix_dizaine=alphabet.load_texture(chiffre_path,prix_nb_soldat_dizaine_pos);
+    sprite_prix_centaine=alphabet.load_texture(chiffre_path,prix_nb_soldat_centaine_pos);
     
-    if (!alphabet.loadFromFile(chiffre_path))//, sf::IntRect(0,0,96,96)))
-    {
-        std::cout<<"Erreur chargement de alphabet"<< std::endl;
-    }
-   
-    sprite_chiffre_unite.setTexture(alphabet);
-    sprite_chiffre_unite.setPosition(chiffre_nb_soldat_unite_pos);
     sprite_chiffre_unite.setScale(chiffre_scale,chiffre_scale);
    
-    sprite_chiffre_dizaine.setTexture(alphabet);
-    sprite_chiffre_dizaine.setPosition(chiffre_nb_soldat_dizaine_pos);
+    
     sprite_chiffre_dizaine.setScale(chiffre_scale,chiffre_scale);
     
-    sprite_prix_unite.setTexture(alphabet);
-    sprite_prix_unite.setPosition(prix_nb_soldat_unite_pos);
+    
     sprite_prix_unite.setScale(prix_scale,prix_scale);
     sprite_prix_unite.setColor(sf::Color::Green);
    
-    sprite_prix_dizaine.setTexture(alphabet);
-    sprite_prix_dizaine.setPosition(prix_nb_soldat_dizaine_pos);
+    
     sprite_prix_dizaine.setScale(prix_scale,prix_scale);
     sprite_prix_dizaine.setColor(sf::Color::Green);
     
-    sprite_prix_centaine.setTexture(alphabet);
-    sprite_prix_centaine.setPosition(prix_nb_soldat_centaine_pos);
+    
     sprite_prix_centaine.setScale(prix_scale,prix_scale);
     sprite_prix_centaine.setColor(sf::Color::Green);
     
@@ -486,21 +407,14 @@ int main()
     rectangle.setOutlineColor(sf::Color::Red);
     rectangle.setOutlineThickness(thickness_rectangle);
     
-    if (!plage_menu.loadFromFile(plage_menu_path))
-    {
-        std::cout<<"Erreur chargement de la plage menu"<< std::endl;
-    }
-   
-    sprite_plage_menu.setTexture(plage_menu);
+    
+    sprite_plage_menu=plage_menu.load_texture(plage_menu_path,sf::Vector2f(0,0));
+    
     sprite_plage_menu.setScale(plage_menu_scale);
     
+    sprite_tour=tour.load_texture(tour_path,sf::Vector2f(0,0));
+    //if (!tour.loadFromFile(tour_path, sf::IntRect(0,0,tour_dim.x,tour_dim.y)))
     
-    if (!tour.loadFromFile(tour_path, sf::IntRect(0,0,tour_dim.x,tour_dim.y)))
-    {
-        std::cout<<"Erreur chargement des tour"<< std::endl;
-    }
-   
-    sprite_tour.setTexture(tour);
     sprite_tour.setScale(tour_scale);
     // on définit le niveau à l'aide de numéro de tuiles
     

@@ -4,10 +4,14 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace renderer {
+  class Render;
+};
 namespace state {
   class Graph;
 }
 
+#include "renderer/Render.h"
 #include "Graph.h"
 
 namespace state {
