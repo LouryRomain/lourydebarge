@@ -23,7 +23,9 @@ sf::Sprite renderer::Texture::load_texture (std::string path,sf::Vector2f pos){
     
     this->sprite.setTexture(texture);
     this->sprite.setPosition(pos);
+ 
     this->size=texture.getSize();
+    
     return this->sprite;
     
 };

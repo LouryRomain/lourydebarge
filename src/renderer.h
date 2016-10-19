@@ -3,5 +3,8 @@
 #define __RENDERER__H
 
 #include "renderer/Texture.h"
+#include "renderer/Tile.h"
 #include "renderer/Render.h"
+#include "renderer/Level.h"
+#include "renderer/Window.h"
 #endif

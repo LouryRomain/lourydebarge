@@ -5,13 +5,13 @@
 #include <SFML/Graphics.hpp>
 
 namespace renderer {
-  class Render;
+  class Level;
 };
 namespace state {
   class Graph;
 }
 
-#include "renderer/Render.h"
+#include "renderer/Level.h"
 #include "Graph.h"
 
 namespace state {

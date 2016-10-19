@@ -5,9 +5,15 @@
 #include <state.h>
 #include <renderer/Texture.h>
 
+#include "renderer/Tile.h"
+#include "renderer/Window.h"
+#include "renderer/Level.h"
 
 
-class TileMap : public sf::Drawable, public sf::Transformable
+
+
+
+/*class TileMap : public sf::Drawable, public sf::Transformable
 {
 public:
     
@@ -89,7 +95,7 @@ sf::FloatRect view_plage_commune_set(0.804f,0,1,0.18f);
 state::State game;
 
 //window
-sf::RenderWindow window;
+/*sf::RenderWindow window;
 int window_width=1200;
 int window_heigth=700;
 sf::Vector2i pos_window(0,0);
@@ -101,9 +107,9 @@ bool Update_boutique=true;
 
 /////Mode0
 //bacground
-renderer::Texture background;
-sf::Sprite sprite_background;
-std::string background_path="/home/utilisateur/Documents/PLT/res/surfaces/background.png";
+//renderer::Texture background;
+//sf::Sprite sprite_background;
+//std::string background_path="/home/utilisateur/Documents/PLT/res/surfaces/background.png";
 
 //bouton add
 renderer::Texture button;
@@ -241,7 +247,7 @@ sf::Vector2f position(window_width/2,window_heigth/2);
 
 //tile
 
-sf::Image image;
+
 std::string level_1_path="/home/utilisateur/Documents/PLT/res/autres/level1.png";
 std::string tile_texture_path="/home/utilisateur/Documents/PLT/res/surfaces/cailloux_gravier.png";
 sf::Vector2u tile_dim(28,28);
@@ -312,7 +318,7 @@ const int* convert_paint_tab(sf::Image image);
 
 
 
-
+/*
 int main()
 {
     //All the time 
@@ -419,18 +425,19 @@ int main()
     // on définit le niveau à l'aide de numéro de tuiles
     
     
-        if(!image.loadFromFile(level_1_path))
-            std::cout<<"Erreur chargement du paint"<< std::endl;
-    const int* level2=convert_paint_tab(image);
-      sf::Vector2u image_dim(image.getSize());
+        
+    renderer::Tile tile;
+    tile.convert(level_1_path);
     
-    if (!Background.load(tile_texture_path,tile_dim,level2,image_dim.x,image_dim.y))
+      sf::Vector2u image_dim(tile.image.getSize());
+    
+    if (!Background.load(tile_texture_path,tile_dim,tile.tiles,image_dim.x,image_dim.y))
         return -1;
     
     for(unsigned j=0;j<image_dim.y;j++)
         for(unsigned i=0;i<image_dim.x;i++)
         
-            if(static_cast<int>(image.getPixel(i,j).r)==150)
+            if(static_cast<int>(tile.image.getPixel(i,j).r)==150)
                 
                 sprite_tour.setPosition(i,j);
         sf::Vector2f tour_1_pos(sprite_tour.getPosition());
@@ -492,6 +499,8 @@ int main()
             view_boutique.setViewport(sf::FloatRect(0,0,1,1));
              window.setView(view_boutique);
         
+          
+             
          window.draw(sprite_background);
          window.draw(sprite_logo_boutique);
          window.draw(sprite_plage_carte_A);
@@ -542,7 +551,7 @@ int main()
             if(position.x>window_width/2)
                 position.x=window_width/2;
             if(position.y>window_heigth/2)
-                position.y=window_heigth/2;*/
+                position.y=window_heigth/2;*//*
             rectangle.setPosition((position.x)*minimap_scale.x,(position.y)*minimap_scale.y);
             view_map.reset(sf::FloatRect(position.x,position.y,window_width,window_heigth));
             
@@ -642,7 +651,7 @@ void gestion_clavier(){
     if(sprite_perso.getPosition().y>window_heigth)
         
         sprite_perso.setPosition(sf::Vector2f(sprite_perso.getPosition().x,window_heigth));*/
-        
+        /*
 }
 
 //gestion souris
@@ -756,67 +765,28 @@ void gestion_souris(){
      }
              
     
-const int* convert_paint_tab(sf::Image image){
-     
-        sf::Vector2u image_dim(image.getSize());
-        int* tab=new int[(image_dim.x)*(image_dim.y)];
-        for(unsigned j=0;j<image_dim.y;j++)
-        for(unsigned i=0;i<image_dim.x;i++)
+*/
+
+int main()
+{   
+   
+    renderer::Level level;
+    level.level_init();
+
+    while (level.window.window.isOpen())
+    {   
+
+        sf::Event event;
+        while (level.window.window.pollEvent(event))
         {
-        if(!static_cast<int>(image.getPixel(i,j).r)==0)
-        tab[i+j*(image_dim.y)]=4;
-        
-        else
-        if((i>0)&&(i<image_dim.x-1)&&(j>0)&&(j<image_dim.y-1)){
-           if(static_cast<int>(image.getPixel(i,j).r)==0){
-        
-               
-               if((static_cast<int>(image.getPixel(i+1,j).r)==0)&&(static_cast<int>(image.getPixel(i-1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j+1).r)==0)&&(!static_cast<int>(image.getPixel(i,j-1).r)==0))
-        tab[i+j*image_dim.y]=7;
-        if((static_cast<int>(image.getPixel(i+1,j).r)==0)&&(static_cast<int>(image.getPixel(i-1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j-1).r)==0)&&(!static_cast<int>(image.getPixel(i,j+1).r)==0))
-        tab[i+j*image_dim.y]=1;
-        if((static_cast<int>(image.getPixel(i,j+1).r)==0)&&(static_cast<int>(image.getPixel(i,j-1).r)==0)&&(static_cast<int>(image.getPixel(i+1,j).r)==0)&&(!static_cast<int>(image.getPixel(i-1,j).r)==0))
-        tab[i+j*image_dim.y]=5;
-        if((static_cast<int>(image.getPixel(i,j+1).r)==0)&&(static_cast<int>(image.getPixel(i,j-1).r)==0)&&(static_cast<int>(image.getPixel(i-1,j).r)==0)&&(!static_cast<int>(image.getPixel(i+1,j).r)==0))
-        tab[i+j*image_dim.y]=3;
-        
-        
-        
-               if((static_cast<int>(image.getPixel(i+1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j+1).r)==0)&&(!static_cast<int>(image.getPixel(i-1,j).r)==0)&&(!static_cast<int>(image.getPixel(i,j-1).r)==0))
-        tab[i+j*image_dim.y]=8;
-        if((static_cast<int>(image.getPixel(i-1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j+1).r)==0)&&(!static_cast<int>(image.getPixel(i+1,j).r)==0)&&(!static_cast<int>(image.getPixel(i,j-1).r)==0))
-        tab[i+j*image_dim.y]=6;
-        if((static_cast<int>(image.getPixel(i+1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j-1).r)==0)&&(!static_cast<int>(image.getPixel(i-1,j).r)==0)&&(!static_cast<int>(image.getPixel(i,j+1).r)==0))
-        tab[i+j*image_dim.y]=2;
-        if((static_cast<int>(image.getPixel(i-1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j-1).r)==0)&&(!static_cast<int>(image.getPixel(i+1,j).r)==0)&&(!static_cast<int>(image.getPixel(i,j+1).r)==0))
-        tab[i+j*image_dim.y]=0;
-           
-        
-               
-               if((static_cast<int>(image.getPixel(i+1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j+1).r)==0)&&(static_cast<int>(image.getPixel(i-1,j).r)==0)&&(static_cast<int>(image.getPixel(i,j-1).r)==0)){
-                   if(!static_cast<int>(image.getPixel(i+1,j+1).r)==0)
-                           tab[i+j*image_dim.y]=0;
-                   
-                   if(!static_cast<int>(image.getPixel(i+1,j-1).r)==0)
-                           tab[i+j*image_dim.y]=6;
-                   
-                   if(!static_cast<int>(image.getPixel(i-1,j+1).r)==0)
-                           tab[i+j*image_dim.y]=2;
-                   
-                   if(!static_cast<int>(image.getPixel(i-1,j-1).r)==0)
-                           tab[i+j*image_dim.y]=8;
-               }
-        
-                   
-        
-           
-           }
-        }else tab[i+j*image_dim.y]=4;
+            if (event.type == sf::Event::Closed)
+                level.window.window.close();
         }
        
+        level.upDate();
         
-        
-        return tab;
     }
 
+    return 0;
+}
 

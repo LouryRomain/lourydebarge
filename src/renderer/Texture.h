@@ -6,15 +6,9 @@
 #include <string>
 
 namespace renderer {
-  class Render;
-}
-
-#include "Render.h"
-
-namespace renderer {
 
   /// class Texture - 
-  class Texture : public renderer::Render {
+  class Texture {
     // Attributes
   public:
     sf::Sprite sprite;

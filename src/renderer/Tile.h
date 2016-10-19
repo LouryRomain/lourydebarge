@@ -2,11 +2,29 @@
 #ifndef RENDERER__TILE__H
 #define RENDERER__TILE__H
 
+#include <SFML/Graphics.hpp>
+#include <string>
+
+namespace renderer {
+  class Render;
+}
+
+#include "Render.h"
 
 namespace renderer {
 
   /// class Tile - 
   class Tile {
+    // Attributes
+  public:
+    const int* tiles;
+    sf::Vector2u image_dim;
+    sf::Image image;
+    // Operations
+  public:
+    void convert (std::string path);
+    ~Tile ();
+    Tile ();
   };
 
 };
