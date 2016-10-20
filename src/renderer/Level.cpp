@@ -7,112 +7,81 @@
 #include "View.h"
 #include "Tile.h"
 
-
 /////initialisation
-////All the time 
-//plage commune
-int plage_commune_width=235;
-float plage_commune_pos_Y=0;
-sf::Vector2f plage_commune_dim(235,128);
 
 //bouton add
-sf::Vector2i anim_button_add(1,0);
-sf::Vector2i anim_button_minus(0,0);
-sf::Vector2f button_dim(25,25);
 sf::Vector2f offset_button_origin(8,10);
 sf::Vector2f offset_button_exte(8,5);
 
 //bouton ok
-sf::Vector2i anim_button_ok_A(0,0);
-sf::Vector2i anim_button_ok_B(0,0);
-sf::Vector2i anim_button_ok_C(0,0);
-sf::Vector2i anim_button_ok_compteur(0,0);
-sf::Vector2f button_ok_dim(64,22);
 float decalage_carte_ok=5;
 float decalage_nombre_ok=15;
 
-//carte verso
-sf::Vector2f carte_A_pos(30,350);
-sf::Vector2f carte_B_pos(490,350);
-sf::Vector2f carte_C_pos(930,350);
-std::string carte_verso_path="/home/utilisateur/Documents/PLT/res/autres/carte_verso.png";
-sf::Vector2f carte_verso_scale(0.75f,0.75f);
-sf::Vector2f carte_verso_dim(261,406);
-
 //chiffre
-sf::Vector2i anim_chiffre_unite(9,72);
-sf::Vector2i anim_chiffre_dizaine(9,72);
-sf::Vector2i anim_prix_unite(9,72);
-sf::Vector2f chiffre_dim(17,17);
-sf::Vector2f chiffre_scale(2,2);
-sf::Vector2f prix_scale(1.6f,1.6f);
-sf::Vector2f chiffre_nb_soldat_unite_pos(590,160);
-sf::Vector2f prix_nb_soldat_unite_pos(590,110);
 int ajustement_sprite_chiffre=2;
-
-//dragon
-int speed=25;
-renderer::Texture perso;
-sf::Sprite sprite_perso;
-enum Dir{Down,Left,Right,Up};
-sf::Vector2i anim_dragon(0,Down);
-bool Update_dragon=false;
-sf::Vector2f perso_pos(600,350);
 
 //plage carte
 sf::Vector2f  select_plage_carte_A(0,0);
 sf::Vector2f  select_plage_carte_B(0,1);
 sf::Vector2f  select_plage_carte_C(0,2);
-sf::Vector2f plage_carte_dim(228,76);
-
-//soldat
-sf::Vector2i anim_soldat(0,0);
-sf::Vector2f soldat_dim(80,80);
 
 //view
 sf::View view_boutique;
 
-////Mode 1
-//minimap
-sf::Vector2f minimap_scale(0.25f,0.25f);
-
-//plage menu
 sf::Vector2i anim_plage_menu(1,0);
-sf::Vector2i plage_menu_dim(358,700);
+sf::Vector2i anim_soldat(0,0);
+sf::Vector2i anim_chiffre_unite(9,72);
+sf::Vector2i anim_chiffre_dizaine(9,72);
+sf::Vector2i anim_prix_unite(9,72);
+sf::Vector2i anim_button_ok_A(0,0);
+sf::Vector2i anim_button_ok_B(0,0);
+sf::Vector2i anim_button_ok_C(0,0);
+sf::Vector2i anim_button_ok_compteur(0,0);
+sf::Vector2i anim_button_add(1,0);
+sf::Vector2i anim_button_minus(0,0);
 
-//tour 
-sf::Vector2i tour_dim(68,68);
-
-//All the time
-//plage commune
-sf::Vector2f plage_commune_pos(1200-plage_commune_width,plage_commune_pos_Y);
 sf::Vector2f pos_default(0,0);
+
 sf::Vector2f scale_default(1,1);
 sf::Vector2f button_ok_scale(1.5f,1.5f);
+sf::Vector2f minimap_scale(0.25f,0.25f);
+sf::Vector2f chiffre_scale(2,2);
+sf::Vector2f prix_scale(1.6f,1.6f);
+sf::Vector2f carte_verso_scale(0.75f,0.75f);
+
+sf::Vector2i plage_menu_dim(358,700);
+sf::Vector2i tour_dim(68,68);
+sf::Vector2f soldat_dim(80,80);
+sf::Vector2f plage_carte_dim(228,76);
+sf::Vector2f chiffre_dim(17,17);
+sf::Vector2f carte_verso_dim(261,406);
+sf::Vector2f button_ok_dim(64,22);
+sf::Vector2f button_dim(25,25);
+sf::Vector2f plage_commune_dim(235,128);
 
 state::Element background("/home/utilisateur/Documents/PLT/res/surfaces/background.png",pos_default,scale_default);
 state::Element plage_menu("/home/utilisateur/Documents/PLT/res/autres/plage_menu.png",pos_default,sf::Vector2f(3.3f,1));
-state::Element carte_verso_A("/home/utilisateur/Documents/PLT/res/autres/carte_verso.png",sf::Vector2f(30,350),sf::Vector2f(0.75f,0.75f));
-state::Element carte_verso_B("/home/utilisateur/Documents/PLT/res/autres/carte_verso.png",sf::Vector2f(490,350),sf::Vector2f(0.75f,0.75f));
-state::Element carte_verso_C("/home/utilisateur/Documents/PLT/res/autres/carte_verso.png",sf::Vector2f(930,350),sf::Vector2f(0.75f,0.75f));
+state::Element carte_verso_A("/home/utilisateur/Documents/PLT/res/autres/carte_verso.png",sf::Vector2f(30,350),carte_verso_scale);
+state::Element carte_verso_B("/home/utilisateur/Documents/PLT/res/autres/carte_verso.png",sf::Vector2f(490,350),carte_verso_scale);
+state::Element carte_verso_C("/home/utilisateur/Documents/PLT/res/autres/carte_verso.png",sf::Vector2f(930,350),carte_verso_scale);
 state::Element soldat("/home/utilisateur/Documents/PLT/res/mechants/homme.png",sf::Vector2f(700,110),sf::Vector2f(1.5f,1.5f));
-state::Element plage_commune("/home/utilisateur/Documents/PLT/res/autres/plage_commune.png",sf::Vector2f(1200-plage_commune_width,0),scale_default);
+state::Element plage_commune("/home/utilisateur/Documents/PLT/res/autres/plage_commune.png",sf::Vector2f(1200-plage_commune_dim.x,0),scale_default);
 state::Element button_add("/home/utilisateur/Documents/PLT/res/autres/boutton_add.png",sf::Vector2f(625,150),sf::Vector2f(2,2));
 state::Element button_minus("/home/utilisateur/Documents/PLT/res/autres/boutton_add.png",sf::Vector2f(505,150),sf::Vector2f(2,2));
-state::Element button_ok_A("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(carte_A_pos.x+carte_verso_dim.x/2*carte_verso_scale.x-button_ok_dim.x*button_ok_scale.x/2,carte_A_pos.y+carte_verso_dim.y*carte_verso_scale.y+decalage_carte_ok),sf::Vector2f(1.5f,1.5f));
-state::Element button_ok_B("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(carte_B_pos.x+carte_verso_dim.x/2*carte_verso_scale.x-button_ok_dim.x*button_ok_scale.x/2,carte_B_pos.y+carte_verso_dim.y*carte_verso_scale.y+decalage_carte_ok),sf::Vector2f(1.5f,1.5f));
-state::Element button_ok_C("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(carte_C_pos.x+carte_verso_dim.x/2*carte_verso_scale.x-button_ok_dim.x*button_ok_scale.x/2,carte_C_pos.y+carte_verso_dim.y*carte_verso_scale.y+decalage_carte_ok),sf::Vector2f(1.5f,1.5f));
-state::Element button_ok_compteur("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(chiffre_nb_soldat_unite_pos.x-button_ok_dim.x*button_ok_scale.x/2,chiffre_nb_soldat_unite_pos.y+chiffre_dim.y*chiffre_scale.y+decalage_nombre_ok),sf::Vector2f(1.5f,1.5f));
 state::Element chiffre_unite("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(590,160),sf::Vector2f(2,2));
-state::Element chiffre_dizaine("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(chiffre_nb_soldat_unite_pos.x-chiffre_dim.x*chiffre_scale.x,chiffre_nb_soldat_unite_pos.y),sf::Vector2f(2,2));
+state::Element chiffre_dizaine("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(chiffre_unite.pos.x-chiffre_dim.x*chiffre_scale.x,chiffre_unite.pos.y),sf::Vector2f(2,2));
 state::Element prix_unite("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(590,110),sf::Vector2f(1.6f,1.6f));
-state::Element prix_dizaine("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(prix_nb_soldat_unite_pos.x-chiffre_dim.x*prix_scale.x,prix_nb_soldat_unite_pos.y),sf::Vector2f(1.6f,1.6f));
-state::Element prix_centaine("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(prix_nb_soldat_unite_pos.x-chiffre_dim.x*prix_scale.x*2,prix_nb_soldat_unite_pos.y),sf::Vector2f(1.6f,1.6f));
+state::Element prix_dizaine("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(prix_unite.pos.x-chiffre_dim.x*prix_scale.x,prix_unite.pos.y),sf::Vector2f(1.6f,1.6f));
+state::Element prix_centaine("/home/utilisateur/Documents/PLT/res/lettres/alphabet.png",sf::Vector2f(prix_unite.pos.x-chiffre_dim.x*prix_scale.x*2,prix_unite.pos.y),sf::Vector2f(1.6f,1.6f));
+state::Element button_ok_A("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(carte_verso_A.pos.x+carte_verso_dim.x/2*carte_verso_scale.x-button_ok_dim.x*button_ok_scale.x/2,carte_verso_A.pos.y+carte_verso_dim.y*carte_verso_scale.y+decalage_carte_ok),button_ok_scale);
+state::Element button_ok_B("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(carte_verso_B.pos.x+carte_verso_dim.x/2*carte_verso_scale.x-button_ok_dim.x*button_ok_scale.x/2,carte_verso_B.pos.y+carte_verso_dim.y*carte_verso_scale.y+decalage_carte_ok),button_ok_scale);
+state::Element button_ok_C("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(carte_verso_C.pos.x+carte_verso_dim.x/2*carte_verso_scale.x-button_ok_dim.x*button_ok_scale.x/2,carte_verso_C.pos.y+carte_verso_dim.y*carte_verso_scale.y+decalage_carte_ok),button_ok_scale);
+state::Element button_ok_compteur("/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png",sf::Vector2f(chiffre_unite.pos.x-button_ok_dim.x*button_ok_scale.x/2,chiffre_unite.pos.y+chiffre_dim.y*chiffre_scale.y+decalage_nombre_ok),button_ok_scale);;
 state::Element logo_boutique("/home/utilisateur/Documents/PLT/res/autres/logo.png",pos_default,scale_default);
 state::Element money("/home/utilisateur/Documents/PLT/res/autres/money.png",sf::Vector2f(630,100),sf::Vector2f(0.75f,0.75f));
-state::Element plage_carte_A("/home/utilisateur/Documents/PLT/res/autres/plage_carte.png",sf::Vector2f(carte_A_pos.x+carte_verso_dim.x/2*carte_verso_scale.x-plage_carte_dim.x/2,carte_A_pos.y-plage_carte_dim.y),scale_default);
-state::Element plage_carte_B("/home/utilisateur/Documents/PLT/res/autres/plage_carte.png",sf::Vector2f(carte_B_pos.x+carte_verso_dim.x/2*carte_verso_scale.x-plage_carte_dim.x/2,carte_B_pos.y-plage_carte_dim.y),scale_default);
-state::Element plage_carte_C("/home/utilisateur/Documents/PLT/res/autres/plage_carte.png",sf::Vector2f(carte_C_pos.x+carte_verso_dim.x/2*carte_verso_scale.x-plage_carte_dim.x/2,carte_C_pos.y-plage_carte_dim.y),scale_default);
+state::Element plage_carte_A("/home/utilisateur/Documents/PLT/res/autres/plage_carte.png",sf::Vector2f(carte_verso_A.pos.x+carte_verso_dim.x/2*carte_verso_scale.x-plage_carte_dim.x/2,carte_verso_A.pos.y-plage_carte_dim.y),scale_default);
+state::Element plage_carte_B("/home/utilisateur/Documents/PLT/res/autres/plage_carte.png",sf::Vector2f(carte_verso_B.pos.x+carte_verso_dim.x/2*carte_verso_scale.x-plage_carte_dim.x/2,carte_verso_B.pos.y-plage_carte_dim.y),scale_default);
+state::Element plage_carte_C("/home/utilisateur/Documents/PLT/res/autres/plage_carte.png",sf::Vector2f(carte_verso_C.pos.x+carte_verso_dim.x/2*carte_verso_scale.x-plage_carte_dim.x/2,carte_verso_C.pos.y-plage_carte_dim.y),scale_default);
 state::Element tour("/home/utilisateur/Documents/PLT/res/tours/tours.png",pos_default,sf::Vector2f(2,2));
 
 renderer::View view;
@@ -250,7 +219,7 @@ sf::Vector2u tile_dim(28,28);
  
     tile.convert(level_1_path);
     Background.load(tile_texture_path,tile_dim,tile.tiles,tile.image_dim.x,tile.image_dim.y);    
-    state.Mode=0;
+    state.Mode=1;
  }
  
  void renderer::Level::upDate(){

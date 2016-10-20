@@ -11,16 +11,19 @@ namespace state {
 };
 namespace renderer {
   class View;
+  class Texture;
 }
 
 #include "Window.h"
 #include "state/State.h"
 #include "View.h"
+#include "Texture.h"
 
 namespace renderer {
 
   /// class Level - 
-  class Level {
+  class Level : public state::State, public renderer::Window {
+    // Associations
     // Attributes
   public:
     renderer::Window window;
