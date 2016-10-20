@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/utilisateur/Documents/PLT/lourydebarge
+CMAKE_SOURCE_DIR = /home/utilisateur/Documents/PLT
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/utilisateur/Documents/PLT/lourydebarge/build
+CMAKE_BINARY_DIR = /home/utilisateur/Documents/PLT/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/utilisateur/Documents/PLT/lourydebarge/build/CMakeFiles /home/utilisateur/Documents/PLT/lourydebarge/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/utilisateur/Documents/PLT/build/CMakeFiles /home/utilisateur/Documents/PLT/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/utilisateur/Documents/PLT/lourydebarge/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/utilisateur/Documents/PLT/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,6 +123,33 @@ run/fast:
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
+src/control/Clavier.o: src/control/Clavier.cpp.o
+
+.PHONY : src/control/Clavier.o
+
+# target to build an object file
+src/control/Clavier.cpp.o:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/control/Clavier.cpp.o
+.PHONY : src/control/Clavier.cpp.o
+
+src/control/Clavier.i: src/control/Clavier.cpp.i
+
+.PHONY : src/control/Clavier.i
+
+# target to preprocess a source file
+src/control/Clavier.cpp.i:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/control/Clavier.cpp.i
+.PHONY : src/control/Clavier.cpp.i
+
+src/control/Clavier.s: src/control/Clavier.cpp.s
+
+.PHONY : src/control/Clavier.s
+
+# target to generate assembly for a file
+src/control/Clavier.cpp.s:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/control/Clavier.cpp.s
+.PHONY : src/control/Clavier.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -150,32 +177,140 @@ src/main.cpp.s:
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/state/Adjacent.o: src/state/Adjacent.cpp.o
+src/renderer/Level.o: src/renderer/Level.cpp.o
 
-.PHONY : src/state/Adjacent.o
+.PHONY : src/renderer/Level.o
 
 # target to build an object file
-src/state/Adjacent.cpp.o:
-	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Adjacent.cpp.o
-.PHONY : src/state/Adjacent.cpp.o
+src/renderer/Level.cpp.o:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Level.cpp.o
+.PHONY : src/renderer/Level.cpp.o
 
-src/state/Adjacent.i: src/state/Adjacent.cpp.i
+src/renderer/Level.i: src/renderer/Level.cpp.i
 
-.PHONY : src/state/Adjacent.i
+.PHONY : src/renderer/Level.i
 
 # target to preprocess a source file
-src/state/Adjacent.cpp.i:
-	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Adjacent.cpp.i
-.PHONY : src/state/Adjacent.cpp.i
+src/renderer/Level.cpp.i:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Level.cpp.i
+.PHONY : src/renderer/Level.cpp.i
 
-src/state/Adjacent.s: src/state/Adjacent.cpp.s
+src/renderer/Level.s: src/renderer/Level.cpp.s
 
-.PHONY : src/state/Adjacent.s
+.PHONY : src/renderer/Level.s
 
 # target to generate assembly for a file
-src/state/Adjacent.cpp.s:
-	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Adjacent.cpp.s
-.PHONY : src/state/Adjacent.cpp.s
+src/renderer/Level.cpp.s:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Level.cpp.s
+.PHONY : src/renderer/Level.cpp.s
+
+src/renderer/Texture.o: src/renderer/Texture.cpp.o
+
+.PHONY : src/renderer/Texture.o
+
+# target to build an object file
+src/renderer/Texture.cpp.o:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Texture.cpp.o
+.PHONY : src/renderer/Texture.cpp.o
+
+src/renderer/Texture.i: src/renderer/Texture.cpp.i
+
+.PHONY : src/renderer/Texture.i
+
+# target to preprocess a source file
+src/renderer/Texture.cpp.i:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Texture.cpp.i
+.PHONY : src/renderer/Texture.cpp.i
+
+src/renderer/Texture.s: src/renderer/Texture.cpp.s
+
+.PHONY : src/renderer/Texture.s
+
+# target to generate assembly for a file
+src/renderer/Texture.cpp.s:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Texture.cpp.s
+.PHONY : src/renderer/Texture.cpp.s
+
+src/renderer/Tile.o: src/renderer/Tile.cpp.o
+
+.PHONY : src/renderer/Tile.o
+
+# target to build an object file
+src/renderer/Tile.cpp.o:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Tile.cpp.o
+.PHONY : src/renderer/Tile.cpp.o
+
+src/renderer/Tile.i: src/renderer/Tile.cpp.i
+
+.PHONY : src/renderer/Tile.i
+
+# target to preprocess a source file
+src/renderer/Tile.cpp.i:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Tile.cpp.i
+.PHONY : src/renderer/Tile.cpp.i
+
+src/renderer/Tile.s: src/renderer/Tile.cpp.s
+
+.PHONY : src/renderer/Tile.s
+
+# target to generate assembly for a file
+src/renderer/Tile.cpp.s:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Tile.cpp.s
+.PHONY : src/renderer/Tile.cpp.s
+
+src/renderer/View.o: src/renderer/View.cpp.o
+
+.PHONY : src/renderer/View.o
+
+# target to build an object file
+src/renderer/View.cpp.o:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/View.cpp.o
+.PHONY : src/renderer/View.cpp.o
+
+src/renderer/View.i: src/renderer/View.cpp.i
+
+.PHONY : src/renderer/View.i
+
+# target to preprocess a source file
+src/renderer/View.cpp.i:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/View.cpp.i
+.PHONY : src/renderer/View.cpp.i
+
+src/renderer/View.s: src/renderer/View.cpp.s
+
+.PHONY : src/renderer/View.s
+
+# target to generate assembly for a file
+src/renderer/View.cpp.s:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/View.cpp.s
+.PHONY : src/renderer/View.cpp.s
+
+src/renderer/Window.o: src/renderer/Window.cpp.o
+
+.PHONY : src/renderer/Window.o
+
+# target to build an object file
+src/renderer/Window.cpp.o:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Window.cpp.o
+.PHONY : src/renderer/Window.cpp.o
+
+src/renderer/Window.i: src/renderer/Window.cpp.i
+
+.PHONY : src/renderer/Window.i
+
+# target to preprocess a source file
+src/renderer/Window.cpp.i:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Window.cpp.i
+.PHONY : src/renderer/Window.cpp.i
+
+src/renderer/Window.s: src/renderer/Window.cpp.s
+
+.PHONY : src/renderer/Window.s
+
+# target to generate assembly for a file
+src/renderer/Window.cpp.s:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/renderer/Window.cpp.s
+.PHONY : src/renderer/Window.cpp.s
 
 src/state/Card.o: src/state/Card.cpp.o
 
@@ -204,6 +339,33 @@ src/state/Card.cpp.s:
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Card.cpp.s
 .PHONY : src/state/Card.cpp.s
 
+src/state/Element.o: src/state/Element.cpp.o
+
+.PHONY : src/state/Element.o
+
+# target to build an object file
+src/state/Element.cpp.o:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Element.cpp.o
+.PHONY : src/state/Element.cpp.o
+
+src/state/Element.i: src/state/Element.cpp.i
+
+.PHONY : src/state/Element.i
+
+# target to preprocess a source file
+src/state/Element.cpp.i:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Element.cpp.i
+.PHONY : src/state/Element.cpp.i
+
+src/state/Element.s: src/state/Element.cpp.s
+
+.PHONY : src/state/Element.s
+
+# target to generate assembly for a file
+src/state/Element.cpp.s:
+	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Element.cpp.s
+.PHONY : src/state/Element.cpp.s
+
 src/state/Gang.o: src/state/Gang.cpp.o
 
 .PHONY : src/state/Gang.o
@@ -230,33 +392,6 @@ src/state/Gang.s: src/state/Gang.cpp.s
 src/state/Gang.cpp.s:
 	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Gang.cpp.s
 .PHONY : src/state/Gang.cpp.s
-
-src/state/Graph.o: src/state/Graph.cpp.o
-
-.PHONY : src/state/Graph.o
-
-# target to build an object file
-src/state/Graph.cpp.o:
-	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Graph.cpp.o
-.PHONY : src/state/Graph.cpp.o
-
-src/state/Graph.i: src/state/Graph.cpp.i
-
-.PHONY : src/state/Graph.i
-
-# target to preprocess a source file
-src/state/Graph.cpp.i:
-	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Graph.cpp.i
-.PHONY : src/state/Graph.cpp.i
-
-src/state/Graph.s: src/state/Graph.cpp.s
-
-.PHONY : src/state/Graph.s
-
-# target to generate assembly for a file
-src/state/Graph.cpp.s:
-	$(MAKE) -f CMakeFiles/run.dir/build.make CMakeFiles/run.dir/src/state/Graph.cpp.s
-.PHONY : src/state/Graph.cpp.s
 
 src/state/State.o: src/state/State.cpp.o
 
@@ -321,21 +456,36 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... run"
+	@echo "... src/control/Clavier.o"
+	@echo "... src/control/Clavier.i"
+	@echo "... src/control/Clavier.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/state/Adjacent.o"
-	@echo "... src/state/Adjacent.i"
-	@echo "... src/state/Adjacent.s"
+	@echo "... src/renderer/Level.o"
+	@echo "... src/renderer/Level.i"
+	@echo "... src/renderer/Level.s"
+	@echo "... src/renderer/Texture.o"
+	@echo "... src/renderer/Texture.i"
+	@echo "... src/renderer/Texture.s"
+	@echo "... src/renderer/Tile.o"
+	@echo "... src/renderer/Tile.i"
+	@echo "... src/renderer/Tile.s"
+	@echo "... src/renderer/View.o"
+	@echo "... src/renderer/View.i"
+	@echo "... src/renderer/View.s"
+	@echo "... src/renderer/Window.o"
+	@echo "... src/renderer/Window.i"
+	@echo "... src/renderer/Window.s"
 	@echo "... src/state/Card.o"
 	@echo "... src/state/Card.i"
 	@echo "... src/state/Card.s"
+	@echo "... src/state/Element.o"
+	@echo "... src/state/Element.i"
+	@echo "... src/state/Element.s"
 	@echo "... src/state/Gang.o"
 	@echo "... src/state/Gang.i"
 	@echo "... src/state/Gang.s"
-	@echo "... src/state/Graph.o"
-	@echo "... src/state/Graph.i"
-	@echo "... src/state/Graph.s"
 	@echo "... src/state/State.o"
 	@echo "... src/state/State.i"
 	@echo "... src/state/State.s"

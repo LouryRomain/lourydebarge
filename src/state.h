@@ -3,7 +3,6 @@
 #define __STATE__H
 
 #include "state/Gang.h"
-#include "state/Card.h"
 #include "state/Territory.h"
 #include "state/State.h"
 #include "state/Element.h"
