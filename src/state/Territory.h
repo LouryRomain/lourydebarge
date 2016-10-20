@@ -6,11 +6,9 @@
 
 namespace state {
   class Gang;
-  class Adjacent;
 }
 
 #include "Gang.h"
-#include "Adjacent.h"
 
 namespace state {
 

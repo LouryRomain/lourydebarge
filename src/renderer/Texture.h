@@ -19,7 +19,7 @@ namespace renderer {
   public:
     Texture ();
     ~Texture ();
-    sf::Sprite load_texture (std::string path, sf::Vector2f pos);
+    sf::Sprite load_texture (std::string path, sf::Vector2f pos, sf::Vector2f scale);
     sf::Vector2u getSize ();
     void setSize (sf::Vector2u size);
   };

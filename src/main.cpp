@@ -551,7 +551,7 @@ int main()
             if(position.x>window_width/2)
                 position.x=window_width/2;
             if(position.y>window_heigth/2)
-                position.y=window_heigth/2;*//*
+                position.y=window_heigth/2;*
             rectangle.setPosition((position.x)*minimap_scale.x,(position.y)*minimap_scale.y);
             view_map.reset(sf::FloatRect(position.x,position.y,window_width,window_heigth));
             
@@ -769,7 +769,7 @@ void gestion_souris(){
 
 int main()
 {   
-   
+    
     renderer::Level level;
     level.level_init();
 

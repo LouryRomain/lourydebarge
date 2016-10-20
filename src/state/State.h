@@ -4,15 +4,13 @@
 
 #include <SFML/Graphics.hpp>
 
-namespace renderer {
-  class Level;
-};
 namespace state {
-  class Graph;
+  class Gang;
+  class Element;
 }
 
-#include "renderer/Level.h"
-#include "Graph.h"
+#include "Gang.h"
+#include "Element.h"
 
 namespace state {
 

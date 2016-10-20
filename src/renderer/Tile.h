@@ -6,12 +6,6 @@
 #include <string>
 
 namespace renderer {
-  class Render;
-}
-
-#include "Render.h"
-
-namespace renderer {
 
   /// class Tile - 
   class Tile {

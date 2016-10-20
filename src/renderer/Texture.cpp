@@ -14,7 +14,7 @@
      
  };
 
-sf::Sprite renderer::Texture::load_texture (std::string path,sf::Vector2f pos){
+sf::Sprite renderer::Texture::load_texture (std::string path,sf::Vector2f pos,sf::Vector2f scale){
     
     if (!texture.loadFromFile(path))
     {
@@ -23,7 +23,7 @@ sf::Sprite renderer::Texture::load_texture (std::string path,sf::Vector2f pos){
     
     this->sprite.setTexture(texture);
     this->sprite.setPosition(pos);
- 
+    this->sprite.setScale(scale);
     this->size=texture.getSize();
     
     return this->sprite;
