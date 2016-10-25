@@ -4,6 +4,16 @@
 
 #include <SFML/Graphics.hpp>
 
+namespace state {
+  class State;
+};
+namespace renderer {
+  class Level;
+}
+
+#include "state/State.h"
+#include "Level.h"
+
 namespace renderer {
 
   /// class View - 
@@ -15,11 +25,13 @@ namespace renderer {
     sf::View view_map;
     sf::View view_menu;
     sf::View view_minimap;
+    sf::RectangleShape rectangle;
     // Operations
   public:
     View ();
     ~View ();
-    void View_init ();
+    void View_init (state::State state);
+    void View_UpDate (state::State state);
   };
 
 };

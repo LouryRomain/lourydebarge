@@ -3,14 +3,19 @@
 #define STATE__STATE__H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 namespace state {
+  class Player;
+  class Territory;
+  class ListElement;
   class Gang;
-  class Element;
 }
 
+#include "Player.h"
+#include "Territory.h"
+#include "ListElement.h"
 #include "Gang.h"
-#include "Element.h"
 
 namespace state {
 
@@ -19,10 +24,12 @@ namespace state {
     // Associations
     // Attributes
   public:
-    int Mode;
+    int* Mode;
     int nb_territory;
     int nb_gang;
     sf::Image image;
+    state::Player player;
+    std::vector<state::Territory> list_territory;
     // Operations
   public:
     State ();
@@ -31,6 +38,8 @@ namespace state {
     void set_nb_territory (int nb_territory);
     int get_nb_gang ();
     void set_nb_gang (int nb_gang);
+    void setMode (int mode);
+    state::Player getPlayer ();
   };
 
 };

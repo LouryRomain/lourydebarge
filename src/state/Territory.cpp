@@ -10,7 +10,7 @@ namespace state {
 
   
     Territory::Territory (){
-        
+        cliked=0;
     }
     
     Territory::~Territory (){

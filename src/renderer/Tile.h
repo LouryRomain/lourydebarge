@@ -3,6 +3,7 @@
 #define RENDERER__TILE__H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include <string>
 
 namespace renderer {
@@ -14,6 +15,8 @@ namespace renderer {
     const int* tiles;
     sf::Vector2u image_dim;
     sf::Image image;
+    int size;
+    std::vector<sf::Vector2f> pos_tour;
     // Operations
   public:
     void convert (std::string path);

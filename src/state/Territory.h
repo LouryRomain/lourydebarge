@@ -5,10 +5,12 @@
 #include <string>
 
 namespace state {
-  class Gang;
+  class Element;
+  class ListTerritory;
 }
 
-#include "Gang.h"
+#include "Element.h"
+#include "ListTerritory.h"
 
 namespace state {
 
@@ -16,6 +18,9 @@ namespace state {
   class Territory {
     // Associations
     // Attributes
+  public:
+    Element tour;
+    bool cliked;
   private:
     int nb_unit;
     std::string gang;

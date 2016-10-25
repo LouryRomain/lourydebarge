@@ -10,13 +10,11 @@ namespace state {
   class State;
 };
 namespace renderer {
-  class View;
   class Texture;
 }
 
 #include "Window.h"
 #include "state/State.h"
-#include "View.h"
 #include "Texture.h"
 
 namespace renderer {

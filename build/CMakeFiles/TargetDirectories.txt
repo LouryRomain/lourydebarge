@@ -1,3 +1,0 @@
-/home/utilisateur/Documents/PLT/build/CMakeFiles/edit_cache.dir
-/home/utilisateur/Documents/PLT/build/CMakeFiles/rebuild_cache.dir
-/home/utilisateur/Documents/PLT/build/CMakeFiles/run.dir

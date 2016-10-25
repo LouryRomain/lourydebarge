@@ -9,6 +9,8 @@
 namespace state {
 
     State::State (){
+        Mode=new int;
+        *Mode=1;
     }
     
     State::~State (){
@@ -28,4 +30,15 @@ namespace state {
     void State::set_nb_gang (int nb_gang){
         this->nb_gang = nb_gang;
     }
+    void State::setMode (int mode){
+        delete Mode;
+        Mode=new int;
+        *Mode = mode;
+        
+    }
+    state::Player State::getPlayer(){
+        return player;
+    }
+    
+    
   };

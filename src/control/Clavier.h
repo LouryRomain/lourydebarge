@@ -3,15 +3,22 @@
 #define CONTROL__CLAVIER__H
 
 
+namespace state {
+  class State;
+};
+class Observable;
+#include "state/State.h"
+#include "Observable.h"
+
 namespace control {
 
   /// class Clavier - 
-  class Clavier {
+  class Clavier : public Observable {
     // Operations
   public:
     Clavier ();
     ~Clavier ();
-    void gestion_clavier ();
+    void gestion_clavier (state::State state);
   };
 
 };

@@ -6,4 +6,7 @@
 #include "state/Territory.h"
 #include "state/State.h"
 #include "state/Element.h"
+#include "state/Player.h"
+#include "state/ListElement.h"
+#include "state/ListTerritory.h"
 #endif
