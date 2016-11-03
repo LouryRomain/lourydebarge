@@ -3,6 +3,6 @@
 #define __CONTROL__H
 
 #include "control/Clavier.h"
-#include "control/Clock.h"
 #include "control/Souris.h"
+#include "control/Observable.h"
 #endif

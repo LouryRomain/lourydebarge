@@ -1,7 +1,7 @@
 #include "ListElement.h"
 #include <iostream>
-
-enum type{rien,button_ok_type,plage_menu_type,carte_verso_type,soldat_type,plage_commune_type,button_add_type,button_minus_type,chiffre_unite_type,chiffre_dizaine_type,prix_unite_type,prix_dizaine_type,prix_centaine_type,plage_carte_A_type,plage_carte_B_type,plage_carte_C_type,tour_type};
+/*
+enum type{rien,button_ok_type,plage_menu_type,carte_verso_type,soldat_type,plage_commune_type,button_add_type,button_minus_type,chiffre_unite_type,chiffre_dizaine_type,prix_unite_type,prix_dizaine_type,prix_centaine_type,plage_carte_A_type,plage_carte_B_type,plage_carte_C_type,C};
 int ajustement_sprite_chiffre=2;
 
 int timeCompteurUp=80;
@@ -239,4 +239,29 @@ if (list_element[i].getType()==prix_dizaine_type)
     }
     }
    
+}
+*/
+state::ListElement::ListElement (int id_view){
+    this->size=0;
+    this->id_view=id_view;
+}
+state::ListElement::~ListElement (){
+    
+}
+void state::ListElement::add_element (state::Element element){
+    list_element.push_back(element);
+    size++;
+}
+std::vector<state::Element> state::ListElement::getlist (){
+    return list_element;
+}
+int state::ListElement::getSize (){
+    return size;
+}
+
+int state::ListElement::getIdView (){
+    return id_view;
+}
+void state::ListElement::setIdView (int id_view){
+    this->id_view=id_view;
 }

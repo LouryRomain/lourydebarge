@@ -3,35 +3,37 @@
 #define RENDERER__VIEW__H
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 
+namespace renderer {
+  class Textures;
+};
 namespace state {
   class State;
-};
-namespace renderer {
-  class Level;
 }
 
+#include "Textures.h"
 #include "state/State.h"
-#include "Level.h"
 
 namespace renderer {
 
   /// class View - 
   class View {
+    // Associations
     // Attributes
   public:
-    sf::View view_boutique;
-    sf::View view_plage_commune;
-    sf::View view_map;
-    sf::View view_menu;
-    sf::View view_minimap;
-    sf::RectangleShape rectangle;
+    sf::View view;
+    int type;
+    std::vector<sf::Sprite> list_sprite;
+    std::vector<renderer::Textures> list_texture;
     // Operations
   public:
-    View ();
+    View (int view);
     ~View ();
-    void View_init (state::State state);
-    void View_UpDate (state::State state);
+    void View_init (state::State& state);
+    void draw (sf::RenderWindow& window, int mode);
+    void add_Sprite (sf::Sprite sprite);
+    void View_upDate (state::State state);
   };
 
 };

@@ -3,18 +3,21 @@
 #define STATE__GANG__H
 
 #include <string>
+#include <vector>
 
 namespace state {
 
   /// class Gang - 
   class Gang {
     // Attributes
+  public:
+    int ID;
   private:
     int money;
-    int nb_unit;
     int nb_card_gang;
     bool alive;
     std::string name;
+    std::vector<int> list_territory;
     // Operations
   public:
     Gang ();
@@ -25,10 +28,10 @@ namespace state {
     int get_money ();
     void set_alive (bool alive);
     bool get_alive ();
-    void set_nb_unit (int nb_unit);
-    int get_nb_unit ();
     std::string get_name ();
     void set_name (std::string name);
+    void setListTerritory (std::vector<int> list_territory);
+    std::vector<int> getListTerritory ();
   };
 
 };

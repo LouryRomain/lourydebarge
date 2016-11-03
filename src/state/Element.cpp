@@ -1,62 +1,89 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 #include <state/Element.h>
 #include <iostream>
 
-state::Element::Element (){
-    
-}
 
-state::Element::Element (std::string path,sf::Vector2f pos,sf::Vector2f scale){
-    this->path=path;
-    this->pos=pos;
-    this->scale=scale;
-}
-state::Element::Element (std::string path, sf::Vector2f pos, sf::Vector2f scale,sf::Vector2i anim,sf::Vector2i dim,int type){
-    this->path=path;
-    this->pos=pos;
-    this->scale=scale;
-    this->dim=dim;
-    this->anim=new sf::Vector2i;
-    *(this->anim)=anim;
-    this->type=type;
-}
-
-state::Element::~Element (){
-    
-}
-
-void state::Element::init(){
-    
-    sprite=texture.load_texture(path,pos,scale);
-}
-    
- sf::Vector2i state::Element::getAnim (){
-     return *anim;
+ state::Element::Element (){
+     
  }
- 
- void state::Element::setAnim (sf::Vector2i anim){
-     delete this->anim;
-     this->anim=new sf::Vector2i;
-     *(this->anim)=anim;}
+ state::Element::~Element (){
      
-     
-void state::Element::setDim(sf::Vector2i dim){
-    this->dim=dim;
-}
-sf::Vector2i state::Element::getDim(){
-    return dim;
-}
-int state::Element::getType (){
-    return type;
+ }
+ state::Element::Element (int posX, int posY, int type){
+     this->posX=new int;
+     *(this->posX)=posX;
+     this->posY=new int;
+     *(this->posY)=posY;
+     this->type=type;
+     this->statut=new int;
+     *statut=0;
+ }
+ int state::Element::getType (){
+     return this->type;
+ }
+ void state::Element::setType (int type){
+     this->type=type;
+ }
+ int state::Element::getPosX (){
+     return *posX;
+ }
+ int state::Element::getPosY (){
+     return *posY;
+ }
+ void state::Element::setPosX (int posX, int posY){
+     delete this->posX;
+     delete this->posY;
+     this->posX=new int;
+     *(this->posX)=posX;
+     this->posY=new int;
+     *(this->posY)=posY;
+ }
+state::Element::Element(int posX, int posY, int type, int statut){
+    this->posX=new int;
+     *(this->posX)=posX;
+     this->posY=new int;
+     *(this->posY)=posY;
+     this->type=type;
+     this->statut=new int;
+     *this->statut=statut;
+     territory=0;
+    
 }
 
-void state::Element::setType (int type){
-    this->type=type;
+bool state::Element::isClickable(){
+    if ((type==13)||(type==14)||(type==15)||(type==22)||(type==23)||(type==24))
+        return 1;
+    else
+        return 0;
 }
+
+bool state::Element::isChiffre(){
+    if ((type==5)||(type==6)||(type==7)||(type=8)||(type==19)||(type==20)||(type=21))
+        return 1;
+    else
+        return 0;
+}
+
+state::Element::Element(int posX, int posY, int type, int statut,int territory){
+    this->posX=new int;
+     *(this->posX)=posX;
+     this->posY=new int;
+     *(this->posY)=posY;
+     this->type=type;
+     this->statut=new int;
+     *this->statut=statut;
+     this->territory=territory;
     
- 
+}
+
+int state::Element::getStatut(){
+    return *statut;
+}
+
+void state::Element::setStatut(int statut){
+   
+    delete this->statut;
+    this->statut=new int; 
+    *(this->statut)=statut;
+}

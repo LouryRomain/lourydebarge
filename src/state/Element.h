@@ -2,14 +2,6 @@
 #ifndef STATE__ELEMENT__H
 #define STATE__ELEMENT__H
 
-#include <SFML/Graphics.hpp>
-#include <string>
-
-namespace renderer {
-  class Texture;
-}
-
-#include "renderer/Texture.h"
 
 namespace state {
 
@@ -17,28 +9,29 @@ namespace state {
   class Element {
     // Attributes
   public:
-    sf::Vector2f pos;
-    sf::Sprite sprite;
-    std::string path;
-    renderer::Texture texture;
-    sf::Vector2f scale;
+    int territory;
   private:
-    sf::Vector2i* anim;
-    sf::Vector2i dim;
+    int* statut;
+  protected:
+    int* posX;
     int type;
+    int* posY;
     // Operations
   public:
     Element ();
-    Element (std::string path, sf::Vector2f pos, sf::Vector2f scale);
     ~Element ();
-    Element (std::string path, sf::Vector2f pos, sf::Vector2f scale, sf::Vector2i anim, sf::Vector2i dim, int type);
-    void init ();
-    sf::Vector2i getAnim ();
-    void setAnim (sf::Vector2i anim);
-    void setDim (sf::Vector2i dim);
-    sf::Vector2i getDim ();
     int getType ();
     void setType (int type);
+    int getPosX ();
+    int getPosY ();
+    void setPosX (int posX, int posY);
+    Element (int posX, int posY, int type);
+    Element (int posX, int posY, int type, int statut);
+    bool isClickable ();
+    bool isChiffre ();
+    Element (int posX, int posY, int type, int statut, int territory);
+    int getStatut ();
+    void setStatut (int statut);
   };
 
 };

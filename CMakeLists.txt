@@ -20,7 +20,7 @@ ENDIF(CMAKE_COMPILER_IS_GNUCC)
 
 # Generate headers
 set(DIA2CODE "${PROJECT_SOURCE_DIR}/dia2code/bin/dia2code")
-exec_program(${DIA2CODE} ARGS -d ../src -t cpp -cl State,Card,ListTerritory,Clavier,ListElement,Observable,Souris,Bouton_ok,Animation,Animated,Clock,Territory,Player,Element,Window,View,Gang,Tile,Level,Texture  ../src/state.dia)
+exec_program(${DIA2CODE} ARGS -d ../src -t cpp -cl State,Card,Static,IObservateur,TYPE_VIEW,Render,Clickable,STATE,TYPE,VIEW,STATE_CLICKABLE,ListTerritory,Clavier,ListElement,Observable,Souris,Bouton_ok,Animation,Animated,Territory,Player,Element,Window,View,Gang,Tile,Textures  ../src/state.dia)
 
 # Sources
 file(GLOB_RECURSE main_sources src/*.cpp)

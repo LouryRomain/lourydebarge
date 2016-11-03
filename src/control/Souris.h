@@ -4,24 +4,32 @@
 
 #include <SFML/Graphics.hpp>
 
-class Observable;
+namespace state {
+  class ListElement;
+  class Player;
+};
+namespace control {
+  class Observable;
+}
+
+#include "state/ListElement.h"
+#include "state/Player.h"
 #include "Observable.h"
 
 namespace control {
 
   /// class Souris - 
-  class Souris : public Observable {
+  class Souris : public control::Observable {
     // Attributes
   public:
-    int* mouseX;
-    int* mouseY;
-    int* left;
-    int* frontDesc;
+    int* posX;
+    int* posY;
     // Operations
   public:
     Souris ();
     ~Souris ();
-    void gestion_souris (sf::RenderWindow& window);
+    state::ListElement gestion_souris (state::ListElement list_element, state::Player player, int mode);
+    void Update (sf::RenderWindow& window);
   };
 
 };

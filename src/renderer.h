@@ -2,9 +2,10 @@
 #ifndef __RENDERER__H
 #define __RENDERER__H
 
-#include "renderer/Texture.h"
+#include "renderer/Textures.h"
 #include "renderer/Tile.h"
-#include "renderer/Level.h"
-#include "renderer/Window.h"
 #include "renderer/View.h"
+#include "renderer/Render.h"
+#include "renderer/TYPE_VIEW.h"
+#include "renderer/Animation.h"
 #endif

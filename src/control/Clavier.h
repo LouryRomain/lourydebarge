@@ -6,19 +6,21 @@
 namespace state {
   class State;
 };
-class Observable;
-#include "state/State.h"
+namespace control {
+  class Observable;
+}
+
 #include "Observable.h"
 
 namespace control {
 
   /// class Clavier - 
-  class Clavier : public Observable {
+  class Clavier : public control::Observable {
     // Operations
   public:
     Clavier ();
     ~Clavier ();
-    void gestion_clavier (state::State state);
+    void gestion_clavier (state::State& state);
   };
 
 };

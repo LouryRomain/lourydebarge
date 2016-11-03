@@ -13,10 +13,12 @@ namespace renderer {
     // Attributes
   public:
     const int* tiles;
-    sf::Vector2u image_dim;
-    sf::Image image;
     int size;
-    std::vector<sf::Vector2f> pos_tour;
+    std::vector<sf::Vector2i> pos_tour;
+    const int* tiles_territory;
+    sf::Image image;
+    sf::Vector2u image_dim;
+    std::vector<sf::Vector2i> pos_chiffre;
     // Operations
   public:
     void convert (std::string path);

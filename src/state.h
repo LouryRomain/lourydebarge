@@ -6,7 +6,10 @@
 #include "state/Territory.h"
 #include "state/State.h"
 #include "state/Element.h"
-#include "state/Player.h"
 #include "state/ListElement.h"
-#include "state/ListTerritory.h"
+#include "state/TYPE.h"
+#include "state/STATE_CLICKABLE.h"
+#include "state/STATE.h"
+#include "state/IObservateur.h"
+#include "state/Player.h"
 #endif

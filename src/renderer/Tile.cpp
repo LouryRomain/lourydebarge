@@ -24,9 +24,9 @@ void renderer::Tile::convert(std::string path){
     
    image1.loadFromFile(path);
    this->image=image1;
-    sf::Vector2u image_dima(image.getSize());
+    image_dim=image.getSize();
     
-    this->image_dim=image_dima;
+   
         int* tab=new int[(image_dim.x)*(image_dim.y)];
         for(unsigned j=0;j<image_dim.y;j++)
         for(unsigned i=0;i<image_dim.x;i++)
@@ -82,12 +82,17 @@ void renderer::Tile::convert(std::string path){
         }else tab[i+j*image_dim.y]=4;
         
         if(static_cast<int>(image.getPixel(i,j).r)==150){
-            state::Element tour("/home/utilisateur/Documents/PLT/res/tours/tours.png",sf::Vector2f(i*28,j*28),sf::Vector2f(2,2),sf::Vector2i(0,0),sf::Vector2i(68,68),tour_type);
-            
-        size++;
-        
-        pos_tour.push_back(sf::Vector2f(i*28,j*28));
+            //state::Element tour(i*28,j*28,16);
+            size++;
+            pos_tour.push_back(sf::Vector2i(i*28,j*28));
         }
+        
+        if(static_cast<int>(image.getPixel(i,j).r)==100){
+            
+            
+            pos_chiffre.push_back(sf::Vector2i(i*28,j*28));
+        }
+        
         }
        
         

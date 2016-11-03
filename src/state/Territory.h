@@ -2,42 +2,34 @@
 #ifndef STATE__TERRITORY__H
 #define STATE__TERRITORY__H
 
-#include <string>
-
-namespace state {
-  class Element;
-  class ListTerritory;
-}
-
-#include "Element.h"
-#include "ListTerritory.h"
+#include <vector>
 
 namespace state {
 
   /// class Territory - 
   class Territory {
-    // Associations
     // Attributes
-  public:
-    Element tour;
-    bool cliked;
   private:
-    int nb_unit;
-    std::string gang;
+    int* nb_unit;
+    int* gang;
     int ID;
     bool QG;
+    std::vector<int> Adjacent;
     // Operations
   public:
     Territory ();
     ~Territory ();
     int get_nb_unit ();
     void set_nb_unit (int nb_unit);
-    std::string get_gang ();
-    void set_gang (std::string gang);
+    int get_gang ();
+    void set_gang (int gang);
     int get_ID ();
     void set_ID (int ID);
     bool get_QG ();
     void set_QG (bool boolean_QG);
+    std::vector<int> getAdajcent ();
+    void addAdjacent (int adjacent);
+    Territory (int nb_unit, int Id, bool QG, int owner);
   };
 
 };

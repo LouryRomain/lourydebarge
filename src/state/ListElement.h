@@ -3,21 +3,12 @@
 #define STATE__LISTELEMENT__H
 
 #include <vector>
-#include <SFML/Graphics.hpp>
 
 namespace state {
   class Element;
-  class ListTerritory;
-  class State;
-};
-namespace control {
-  class Souris;
 }
 
 #include "Element.h"
-#include "ListTerritory.h"
-#include "State.h"
-#include "control/Souris.h"
 
 namespace state {
 
@@ -28,16 +19,16 @@ namespace state {
   private:
     std::vector<state::Element> list_element;
     int size;
+    int id_view;
     // Operations
   public:
-    ListElement ();
+    ListElement (int id_view);
     ~ListElement ();
     void add_element (state::Element element);
-    state::Element* getlist ();
+    std::vector<state::Element> getlist ();
     int getSize ();
-    void init ();
-    void draw (sf::RenderWindow& window, state::ListTerritory list_territory, state::State state);
-    void upDate (control::Souris souris, sf::RenderWindow& window, sf::View view, state::ListTerritory list_territory);
+    int getIdView ();
+    void setIdView (int id_view);
   };
 
 };

@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 #include <control/Clavier.h>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <state/State.h>
 
-#include "renderer/Level.h"
 
 int new_state;
 int old_state=0;
-int speed=25;
+int speed=40;
+int posX;
+int posY;
 
  control::Clavier::Clavier (){
      
@@ -20,25 +17,8 @@ int speed=25;
     control::Clavier::~Clavier (){
         
     }
-   void control::Clavier::gestion_clavier (state::State state){
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-        { state.getPlayer().setPos(sf::Vector2f(state.getPlayer().getPos().x,state.getPlayer().getPos().y-speed));
-            
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-        {   
-            state.getPlayer().setPos(sf::Vector2f(state.getPlayer().getPos().x,state.getPlayer().getPos().y+speed));
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-        {
-            
-            state.getPlayer().setPos(sf::Vector2f(state.getPlayer().getPos().x-speed,state.getPlayer().getPos().y));
-        }
-        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
-          
-            state.getPlayer().setPos(sf::Vector2f(state.getPlayer().getPos().x+speed,state.getPlayer().getPos().y));
-        }
+   void control::Clavier::gestion_clavier (state::State& state){
+        
        
        
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::B))
@@ -48,10 +28,10 @@ int speed=25;
        
        if((old_state==0)&&(new_state==1))
        {
-           if(*(state.Mode)==1)
-           state.setMode(0);
-           else state.setMode(1);
-           
+           if(state.getState()==1)
+           state.setState(0);
+           else state.setState(1);
+           state.player.setCompteur(0);
            old_state=1;
        }
        if((old_state==1)&&(new_state==0)){
@@ -59,6 +39,34 @@ int speed=25;
         old_state=0;
         }
 
+          if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+        { 
+          posY=*(state.player.view_posY);
+          delete state.player.view_posY;
+          state.player.view_posY=new int;
+          *(state.player.view_posY)=posY-speed;
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+        {   
+          posY=*(state.player.view_posY);
+          delete state.player.view_posY;
+          state.player.view_posY=new int;
+          *(state.player.view_posY)=posY+speed;
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+        {
+           posX=*(state.player.view_posX);
+          delete state.player.view_posX;
+          state.player.view_posX=new int;
+          *(state.player.view_posX)=posX-speed;
+        }
+        else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        {
+          posX=*(state.player.view_posX);
+          delete state.player.view_posX;
+          state.player.view_posX=new int;
+          *(state.player.view_posX)=posX+speed;
+        }                                                        
    }
         
     
