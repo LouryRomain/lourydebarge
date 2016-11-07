@@ -1,6 +1,8 @@
+#include <SFML/Graphics.hpp>
 #include "Souris.h"
 #include "state/Player.h"
 #include <iostream>
+
 
 
 
