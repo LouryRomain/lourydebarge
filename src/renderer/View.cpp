@@ -75,8 +75,8 @@ private:
 
 TileMap Background;
 renderer::Tile tile;
-std::string level_1_path="/home/utilisateur/Documents/PLT/res/autres/level1.png";
-std::string tile_texture_path="/home/utilisateur/Documents/PLT/res/surfaces/gravier_herbe.png";
+std::string level_1_path="res/autres/level1.png";
+std::string tile_texture_path="res/surfaces/gravier_herbe.png";
 sf::Vector2u tile_dim(28,28);
 renderer::Animation animation;
 sf::RectangleShape rectangle(sf::Vector2f(1200,700));

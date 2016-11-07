@@ -10,6 +10,7 @@ state::Player::Player (){
     *tour_cliked=tour;
     chiffre_pris=new int;
     *chiffre_pris=0;
+    
 }
 state::Player::~Player (){
     

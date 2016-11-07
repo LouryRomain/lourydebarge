@@ -111,6 +111,8 @@ std::vector<sf::Sprite> renderer::Animation::Update(std::vector<sf::Sprite> list
                         this->affiche_chiffre((player.tour_cliked->territory)%10,list_sprite[i]);
                  if(list_element.getlist()[i].getStatut()==1)
                         this->affiche_chiffre(list_territory[(player.tour_cliked->territory)].get_nb_unit()%10,list_sprite[i]);
+                 if(list_element.getlist()[i].getStatut()==4)
+                        this->affiche_chiffre(list_territory[(player.tour_cliked->territory)].get_gang()%10,list_sprite[i]);
                  
             }
                 if(list_element.getlist()[i].getType()==19)

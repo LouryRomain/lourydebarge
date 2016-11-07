@@ -69,6 +69,7 @@ namespace state {
 */
 state::Gang::Gang (){
     money=6666;
+    
 }
 state::Gang::~Gang (){
     

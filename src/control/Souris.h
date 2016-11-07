@@ -2,7 +2,7 @@
 #ifndef CONTROL__SOURIS__H
 #define CONTROL__SOURIS__H
 
-#include <SFML/Graphics.hpp>
+#include <state/Element.h>
 
 namespace state {
   class ListElement;

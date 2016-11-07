@@ -26,26 +26,26 @@ void renderer::Textures::load_texture (state::Element element){
  
         
         if(element.getType()==1){
-            path="/home/utilisateur/Documents/PLT/res/autres/plage_menu.png";
+            path="res/autres/plage_menu.png";
             dim=sf::Vector2i(358,700);
             selection.x=1;
             
             
         }
         if(element.getType()==2){
-            path="/home/utilisateur/Documents/PLT/res/autres/carte_verso.png";
+            path="res/autres/carte_verso.png";
             scale=sf::Vector2f(0.75f,0.75f);
             dim=sf::Vector2i(261,406);
            
         }
         if(element.getType()==3){
-            path="/home/utilisateur/Documents/PLT/res/mechants/homme.png";
+            path="res/mechants/homme.png";
              scale=sf::Vector2f(1.5f,1.5f);
              dim=sf::Vector2i(80,80);
          
         }
         if(element.getType()==4){
-            path="/home/utilisateur/Documents/PLT/res/autres/plage_commune.png";
+            path="res/autres/plage_commune.png";
             dim=sf::Vector2i(235,128);
        
         }
@@ -56,7 +56,7 @@ void renderer::Textures::load_texture (state::Element element){
                 (element.getType()==19)||
                 (element.getType()==20)||
                 (element.getType()==21)){
-            path="/home/utilisateur/Documents/PLT/res/lettres/alphabet.png";
+            path="res/lettres/alphabet.png";
             dim=sf::Vector2i(17,17);
             selection=sf::Vector2i(10,72);
             if((element.getType()==5)||
@@ -74,7 +74,7 @@ void renderer::Textures::load_texture (state::Element element){
         if((element.getType()==9)||
                 (element.getType()==10)||
                 (element.getType()==11)){
-            path="/home/utilisateur/Documents/PLT/res/autres/plage_carte.png";
+            path="res/autres/plage_carte.png";
             dim=sf::Vector2i(228,76);
             
             
@@ -89,18 +89,18 @@ void renderer::Textures::load_texture (state::Element element){
             
         }
         if(element.getType()==12){
-            path="/home/utilisateur/Documents/PLT/res/surfaces/background.png";
+            path="res/surfaces/background.png";
             
         }
         if((element.getType()==13)||(element.getType()==22)||(element.getType()==23)||(element.getType()==24)){
-            path="/home/utilisateur/Documents/PLT/res/autres/boutton_ok.png";
+            path="res/autres/boutton_ok.png";
              scale=sf::Vector2f(1.5f,1.5f);
              dim=sf::Vector2i(64,22);
           
         }
         if((element.getType()==14)||
                 (element.getType()==15)){
-            path="/home/utilisateur/Documents/PLT/res/autres/boutton_add.png";
+            path="res/autres/boutton_add.png";
              scale=sf::Vector2f(2,2);
              dim=sf::Vector2i(25,25);
              if(element.getType()==14)
@@ -109,17 +109,17 @@ void renderer::Textures::load_texture (state::Element element){
             
         }
         if(element.getType()==16){
-            path="/home/utilisateur/Documents/PLT/res/tours/tours.png";
+            path="res/tours/tours.png";
            scale=sf::Vector2f(2,2);
            dim=sf::Vector2i(68,68);
            
         }
         if(element.getType()==17){
-            path="/home/utilisateur/Documents/PLT/res/autres/money.png";
+            path="res/autres/money.png";
              scale=sf::Vector2f(0.75f,0.75f);
         }
         if(element.getType()==18){
-            path="/home/utilisateur/Documents/PLT/res/autres/logo.png";
+            path="res/autres/logo.png";
             
         }
        
@@ -133,7 +133,7 @@ void renderer::Textures::load_texture (state::Element element){
         sprite.setPosition(element.getPosX(),element.getPosY());
         sprite.setScale(scale);
         if(dim.x!=0)
-            if (path!="/home/utilisateur/Documents/PLT/res/lettres/alphabet.png")
+            if (path!="res/lettres/alphabet.png")
             sprite.setTextureRect(sf::IntRect(selection.x*dim.x,selection.y*dim.y,dim.x,dim.y));
             else
             {sprite.setTextureRect(sf::IntRect(selection.x*dim.x+2,selection.y,dim.x,dim.y));

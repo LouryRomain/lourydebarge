@@ -2,6 +2,7 @@
 #ifndef CONTROL__OBSERVABLE__H
 #define CONTROL__OBSERVABLE__H
 
+#include <state/Element.h>
 
 namespace state {
   class IObservateur;

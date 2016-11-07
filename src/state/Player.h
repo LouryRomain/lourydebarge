@@ -2,6 +2,7 @@
 #ifndef STATE__PLAYER__H
 #define STATE__PLAYER__H
 
+#include <state/Element.h>
 
 namespace state {
   class Gang;

@@ -2,6 +2,7 @@
 #ifndef CONTROL__CLAVIER__H
 #define CONTROL__CLAVIER__H
 
+#include <state/Element.h>
 
 namespace state {
   class State;

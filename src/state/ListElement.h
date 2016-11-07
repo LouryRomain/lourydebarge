@@ -2,6 +2,7 @@
 #ifndef STATE__LISTELEMENT__H
 #define STATE__LISTELEMENT__H
 
+#include <state/Element.h>
 #include <vector>
 
 namespace state {

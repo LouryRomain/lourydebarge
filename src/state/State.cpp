@@ -295,6 +295,8 @@ void state::State::init (){
     state::Element chiffre_unite_pris(0,0,5,3);
     state::Element chiffre_dizaine_pris(0,0,6,3);
     
+    state::Element chiffre_gang(140,200,5,4);
+    
     
   
     list_map.add_element(tour0);
@@ -428,6 +430,7 @@ void state::State::init (){
      list_plage_menu.add_element(chiffre_dizaine_02);
      list_plage_menu.add_element(chiffre_unite_sec);
      list_plage_menu.add_element(chiffre_dizaine_sec);
+     list_plage_menu.add_element(chiffre_gang);
  
      
      list_plage_commune.add_element(plage_commune);
@@ -448,10 +451,11 @@ void state::State::init (){
      
      
      state::Territory territory_0(45,0,1,0);
-     state::Territory territory_1(0,1,0,1);
-     state::Territory territory_2(0,2,0,2);
-     state::Territory territory_3(34,3,0,3);
-     state::Territory territory_4(0,4,0,4);
+     territory_0.set_QG(1);
+     state::Territory territory_1(0,1,0,-1);
+     state::Territory territory_2(0,2,0,-1);
+     state::Territory territory_3(34,3,0,-1);
+     state::Territory territory_4(0,4,0,-1);
      state::Territory territory_5(0,5,0,-1);
      state::Territory territory_6(0,6,0,-1);
      state::Territory territory_7(0,7,0,-1);
@@ -478,6 +482,8 @@ void state::State::init (){
      state::Territory territory_28(0,28,0,-1);
      state::Territory territory_29(0,29,0,-1);
      state::Territory territory_30(0,30,0,-1);
+     
+     
      //a ajouter en premier sinon modifier animation
      list_territory.push_back(territory_0);
      list_territory.push_back(territory_1);
@@ -511,5 +517,5 @@ void state::State::init (){
      list_territory.push_back(territory_29);
      list_territory.push_back(territory_30);
      
-
+     //if()
 }
