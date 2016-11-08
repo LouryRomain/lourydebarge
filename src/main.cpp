@@ -38,7 +38,7 @@ int main() {
         souris.Update(render.window);
         sf::Event event;
 
-        clavier.gestion_clavier(state_game);
+   
         for (int i = 0; i < state_game.getListListElement().size(); i++) {
             state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i], state_game.player, state_game.getState());
         }
@@ -48,7 +48,8 @@ int main() {
         while (render.window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 render.window.close();
-
+            else if(event.type==sf::Event::KeyPressed)
+            clavier.gestion_clavier(state_game);
 
         }
         state_game.upDate();
