@@ -61,6 +61,6 @@ void renderer::Render::draw(state::State state_game) {
 void renderer::Render::upDate(state::State state_game) {
     for (int i = 0; i < list_view.size(); i++) {
 
-        //list_view[i].View_upDate(state_game);
+        list_view[i].View_upDate(state_game);
     }
 }
