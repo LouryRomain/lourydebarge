@@ -234,7 +234,7 @@ void renderer::View::View_upDate(state::State state) {
         if (type == state.getListListElement()[i].getIdView())
             list_sprite = animation.Update(list_sprite, state.getListListElement()[i], state.player, state.list_territory);
     //if (type == 4)
-        view.reset(sf::FloatRect(*(state.player.view_posX), *(state.player.view_posY), 1200, 700));
+        //view.reset(sf::FloatRect(*(state.player.view_posX), *(state.player.view_posY), 1200, 700));
     //if (type == 2)
        // rectangle.setPosition(*(state.player.view_posX) * minimap_scale.x, *(state.player.view_posY) * minimap_scale.y);
 }
