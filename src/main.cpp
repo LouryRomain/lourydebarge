@@ -18,49 +18,42 @@ state::State state_game;
 control::Clavier clavier;
 control::Souris souris;
 
+int main() {
 
 
 
-
-
-int main()
-{   
-    
-     
-     
     state_game.init();
     renderer::Render render;
-     render.init(state_game);
-     std::cout<<state_game.list_territory.size()<<" est le nombre de territoire"<<std::endl;
-     
-     
-     std::cout<<state_game.getListListElement().size()<<" est le nombre de liste d'element"<<std::endl;
-     for(int i=0;i<state_game.getListListElement().size();i++)
-     std::cout<<state_game.getListListElement()[i].getSize()<<" est le nombre d'element dans la liste "<< i <<std::endl;
-    
-     
-    while (render.window.isOpen())
-    {   
-        
+    render.init(state_game);
+    std::cout << state_game.list_territory.size() << " est le nombre de territoire" << std::endl;
+
+
+    std::cout << state_game.getListListElement().size() << " est le nombre de liste d'element" << std::endl;
+    for (int i = 0; i < state_game.getListListElement().size(); i++)
+        std::cout << state_game.getListListElement()[i].getSize() << " est le nombre d'element dans la liste " << i << std::endl;
+
+
+    while (render.window.isOpen()) {
+
         souris.Update(render.window);
         sf::Event event;
-    
-    clavier.gestion_clavier(state_game);
-    for (int i=0;i<state_game.getListListElement().size();i++){
-        state_game.getListListElement()[i]=souris.gestion_souris(state_game.getListListElement()[i],state_game.player,state_game.getState());}
-        
-  
-    
-        while (render.window.pollEvent(event))
-        {
+
+        clavier.gestion_clavier(state_game);
+        for (int i = 0; i < state_game.getListListElement().size(); i++) {
+            state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i], state_game.player, state_game.getState());
+        }
+
+
+
+        while (render.window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 render.window.close();
-           
-            
+
+
         }
-    state_game.upDate();
-    render.upDate(state_game);
-       render.draw(state_game); 
+        state_game.upDate();
+        render.upDate(state_game);
+        render.draw(state_game);
     }
 
     return 0;
