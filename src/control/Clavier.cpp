@@ -1,6 +1,6 @@
-
-#include <control/Clavier.h>
 #include <SFML/Graphics.hpp>
+#include <control/Clavier.h>
+
 #include <iostream>
 #include <state/State.h>
 
@@ -19,11 +19,13 @@ control::Clavier::~Clavier() {
 
 }
 
-void control::Clavier::gestion_clavier(state::State& state) {
+void control::Clavier::gestion_clavier(state::State& state,sf::Keyboard::Key key) {
 
 
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)==sf::Keyboard::isKeyPressed(key))
+        if (!sf::Keyboard::isKeyPressed(sf::Keyboard::B)==!sf::Keyboard::isKeyPressed(key))
+        
         new_state = 1;
     else
         new_state = 0;
@@ -40,26 +42,29 @@ void control::Clavier::gestion_clavier(state::State& state) {
         old_state = 0;
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        posY = *(state.player.view_posY);
-        delete state.player.view_posY;
-        state.player.view_posY = new int;
-        *(state.player.view_posY) = posY - speed;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)==sf::Keyboard::isKeyPressed(key)) {
         posY = *(state.player.view_posY);
         delete state.player.view_posY;
         state.player.view_posY = new int;
         *(state.player.view_posY) = posY + speed;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        posX = *(state.player.view_posX);
-        delete state.player.view_posX;
-        state.player.view_posX = new int;
-        *(state.player.view_posX) = posX - speed;
-    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)==sf::Keyboard::isKeyPressed(key)) {
+        posY = *(state.player.view_posY);
+        delete state.player.view_posY;
+        state.player.view_posY = new int;
+        *(state.player.view_posY) = posY - speed;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)==sf::Keyboard::isKeyPressed(key)) {
         posX = *(state.player.view_posX);
         delete state.player.view_posX;
         state.player.view_posX = new int;
         *(state.player.view_posX) = posX + speed;
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)==sf::Keyboard::isKeyPressed(key)) {
+        posX = *(state.player.view_posX);
+        delete state.player.view_posX;
+        state.player.view_posX = new int;
+        *(state.player.view_posX) = posX - speed;
     }
 }
 

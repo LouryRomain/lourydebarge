@@ -5,21 +5,20 @@
 #include <state/Element.h>
 
 namespace state {
-    class IObservateur;
+  class IObservateur;
 }
 
 #include "state/IObservateur.h"
 
 namespace control {
 
-    /// class Observable - 
-
-    class Observable {
-        // Operations
-    public:
-        void ajouterObserver(state::IObservateur IObservateur);
-        void notifierObservateur();
-    };
+  /// class Observable - 
+  class Observable {
+    // Operations
+  public:
+    void ajouterObserver (state::IObservateur IObservateur);
+    void notifierObservateur ();
+  };
 
 };
 

@@ -49,7 +49,7 @@ int main() {
             if (event.type == sf::Event::Closed)
                 render.window.close();
             else if(event.type==sf::Event::KeyPressed)
-            clavier.gestion_clavier(state_game);
+            clavier.gestion_clavier(state_game,sf::Keyboard::B);
 
         }
         state_game.upDate();

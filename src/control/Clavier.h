@@ -21,7 +21,7 @@ namespace control {
   public:
     Clavier ();
     ~Clavier ();
-    void gestion_clavier (state::State& state);
+    void gestion_clavier (state::State& state, sf::Keyboard::Key key);
   };
 
 };
