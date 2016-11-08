@@ -232,7 +232,7 @@ void renderer::View::add_Sprite(sf::Sprite sprite) {
 void renderer::View::View_upDate(state::State state) {
     for (int i = 0; i < state.getListListElement().size(); i++)
         if (type == state.getListListElement()[i].getIdView())
-    if (type == 4)
+    if ((type == 4)||(type==1)||(type==2)||(type==3)||(type==5))
             list_sprite = animation.Update(list_sprite, state.getListListElement()[i], state.player, state.list_territory);
     //if (type == 4)
       //  view.reset(sf::FloatRect(*(state.player.view_posX), *(state.player.view_posY), 1200, 700));
