@@ -470,13 +470,13 @@ void state::State::init (){
      state::Territory territory_16(0,16,0,-1);
      state::Territory territory_17(0,17,0,-1);
      state::Territory territory_18(0,18,0,-1);
-     state::Territory territory_19(0,19,1,0);
+     state::Territory territory_19(0,19,0,-1);
      state::Territory territory_20(0,20,0,-1);
      state::Territory territory_21(0,21,0,-1);
      state::Territory territory_22(0,22,0,-1);
      state::Territory territory_23(0,23,0,-1);
      state::Territory territory_24(0,24,0,-1);
-     state::Territory territory_25(0,25,0,-1);
+     state::Territory territory_25(0,25,1,0);
      state::Territory territory_26(0,26,0,-1);
      state::Territory territory_27(0,27,0,-1);
      state::Territory territory_28(0,28,0,-1);

@@ -73,7 +73,7 @@ private:
     sf::Texture m_tileset;
 };
 
-TileMap Background;
+//TileMap Background;
 renderer::Tile tile;
 std::string level_1_path="res/autres/level1.png";
 std::string tile_texture_path="res/surfaces/gravier_herbe.png";
@@ -104,7 +104,7 @@ sf::Vector2f minimap_scale(0.25f,0.25f);
 
         if(type==4)
         {tile.convert(level_1_path);
-        Background.load(tile_texture_path,tile_dim,tile.tiles,tile.image_dim.x,tile.image_dim.y);
+       // Background.load(tile_texture_path,tile_dim,tile.tiles,tile.image_dim.x,tile.image_dim.y);
         for(int j=0;j<state.getListListElement().size();j++){
             if(state.getListListElement()[j].getIdView()==type){
         for (int i=0;i<tile.pos_tour.size();i++){
@@ -171,11 +171,11 @@ sf::Vector2f minimap_scale(0.25f,0.25f);
         if((mode==0)||(mode==2))
          if((type==4)||(type==2)){
              if(type==2){
-                 Background.setScale(minimap_scale);
+                // Background.setScale(minimap_scale);
                 
              }
-             else Background.setScale(sf::Vector2f(1,1));
-                    window.draw(Background);
+            // else Background.setScale(sf::Vector2f(1,1));
+                 //   window.draw(Background);
                     if(type==2)
                     window.draw(rectangle);}
         for(int i=0;i<this->list_sprite.size();i++){

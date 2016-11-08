@@ -209,10 +209,10 @@ state::Territory::Territory(int nb_unit, int Id,bool QG,int owner){
     
     }
     if(Id==22){
-        Adjacent.push_back(18);
-        Adjacent.push_back(26);
-    Adjacent.push_back(10);
-    Adjacent.push_back(9);
+        Adjacent.push_back(24);
+        Adjacent.push_back(16);
+    Adjacent.push_back(17);
+    Adjacent.push_back(30);
     
     }
     if(Id==23){
@@ -235,8 +235,9 @@ state::Territory::Territory(int nb_unit, int Id,bool QG,int owner){
         Adjacent.push_back(19);
         Adjacent.push_back(23);
     Adjacent.push_back(24);
-    Adjacent.push_back(28);
+    Adjacent.push_back(26);
     Adjacent.push_back(29);
+     Adjacent.push_back(21);
     
     }
     if(Id==26){
