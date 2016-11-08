@@ -55,17 +55,17 @@ void state::State::upDate (){
                 if((list_ListElement[i].getlist()[j].isClickable())&&(list_ListElement[i].getlist()[j].getStatut()==1)){
                    
                     if(list_ListElement[i].getlist()[j].getType()==14)
-                   {if(clock_ok>5){
+                   {if(clock_ok>10){
                        player.setCompteur(mem+1);
                        clock_ok=0;}
                    }
                    if(list_ListElement[i].getlist()[j].getType()==15){
-                       if(clock_ok>5){
+                       if(clock_ok>10){
                         player.setCompteur(mem-1);
                         clock_ok=0;}
                    }
                    if(list_ListElement[i].getlist()[j].getType()==13){
-                       if(clock_compteur>10){
+                       if(clock_compteur>20){
                            if(*state==1)
                        player.gang.set_money(money-player.getCompteur()*10);
                            if(*state==2){
@@ -87,21 +87,21 @@ void state::State::upDate (){
                        
                    }
                 if(list_ListElement[i].getlist()[j].getType()==22){
-                       if(clock_compteur>10){
+                       if(clock_compteur>20){
                        player.gang.set_money(money-100);
                        clock_compteur=0;
                        }
                        
                    }
                 if(list_ListElement[i].getlist()[j].getType()==23){
-                       if(clock_compteur>10){
+                       if(clock_compteur>20){
                        player.gang.set_money(money-300);
                        clock_compteur=0;
                        }
                        
                    }
                 if(list_ListElement[i].getlist()[j].getType()==24){
-                       if(clock_compteur>10){
+                       if(clock_compteur>20){
                        player.gang.set_money(money-700);
                        clock_compteur=0;
                        }
@@ -297,7 +297,7 @@ void state::State::init (){
     
     state::Element chiffre_gang(140,200,5,4);
     
-    
+   
   
     list_map.add_element(tour0);
     list_map.add_element(tour1);
@@ -450,12 +450,12 @@ void state::State::init (){
      this->add_ListElement(list_plage_commune);
      
      
-     state::Territory territory_0(45,0,1,0);
-     territory_0.set_QG(1);
+     state::Territory territory_0(45,0,0,3);
+     
      state::Territory territory_1(0,1,0,-1);
      state::Territory territory_2(0,2,0,-1);
      state::Territory territory_3(34,3,0,-1);
-     state::Territory territory_4(0,4,0,-1);
+     state::Territory territory_4(0,4,1,2);
      state::Territory territory_5(0,5,0,-1);
      state::Territory territory_6(0,6,0,-1);
      state::Territory territory_7(0,7,0,-1);
@@ -470,7 +470,7 @@ void state::State::init (){
      state::Territory territory_16(0,16,0,-1);
      state::Territory territory_17(0,17,0,-1);
      state::Territory territory_18(0,18,0,-1);
-     state::Territory territory_19(0,19,0,-1);
+     state::Territory territory_19(0,19,1,0);
      state::Territory territory_20(0,20,0,-1);
      state::Territory territory_21(0,21,0,-1);
      state::Territory territory_22(0,22,0,-1);
@@ -517,5 +517,10 @@ void state::State::init (){
      list_territory.push_back(territory_29);
      list_territory.push_back(territory_30);
      
-     //if()
+     for (int i=0;i<list_territory.size();i++){
+         if(list_territory[i].get_QG()==1)
+             for(int j=0;j<list_territory[i].getAdajcent().size();j++)
+                 list_territory[list_territory[i].getAdajcent()[j]].set_gang(list_territory[i].get_gang());
+                 
+     }
 }

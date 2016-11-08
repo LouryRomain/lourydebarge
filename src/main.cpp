@@ -33,10 +33,7 @@ int main()
      render.init(state_game);
      std::cout<<state_game.list_territory.size()<<" est le nombre de territoire"<<std::endl;
      
-     for(int i=0;i<state_game.getListListElement().size();i++)
-         if(state_game.getListListElement()[i].getIdView()==4)
-             for(int j=0;j<state_game.getListListElement()[i].getlist().size();j++)
-         std::cout<<state_game.getListListElement()[i].getlist()[j].territory<<"   "<<i<<std::endl;
+     
      std::cout<<state_game.getListListElement().size()<<" est le nombre de liste d'element"<<std::endl;
      for(int i=0;i<state_game.getListListElement().size();i++)
      std::cout<<state_game.getListListElement()[i].getSize()<<" est le nombre d'element dans la liste "<< i <<std::endl;

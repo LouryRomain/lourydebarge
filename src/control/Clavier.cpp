@@ -7,7 +7,7 @@
 
 int new_state;
 int old_state=0;
-int speed=40;
+int speed=25;
 int posX;
 int posY;
 
