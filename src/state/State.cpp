@@ -7,8 +7,6 @@
 
 int plage_commune_dimX = 235;
 
-int clock_compteur;
-int clock_ok;
 
 state::State::State() {
     state = new int;
@@ -46,107 +44,7 @@ void state::State::add_Gang(state::Gang Gang) {
 }
 
 void state::State::upDate() {
-    clock_ok++;
-    clock_compteur++;
-    for (int i = 0; i < list_ListElement.size(); i++) {
-        for (int j = 0; j < list_ListElement[i].getlist().size(); j++) {
-            int mem;
-            mem = player.getCompteur();
-            int money;
-
-
-            money = player.gang.get_money();
-            if ((list_ListElement[i].getlist()[j].isClickable())&&(list_ListElement[i].getlist()[j].getStatut() == 1)) {
-
-                if (list_ListElement[i].getlist()[j].getType() == 14) {
-                    if (clock_ok > 10) {
-                        player.setCompteur(mem + 1);
-                        clock_ok = 0;
-                    }
-                }
-                if (list_ListElement[i].getlist()[j].getType() == 15) {
-                    if (clock_ok > 10) {
-                        player.setCompteur(mem - 1);
-                        clock_ok = 0;
-                    }
-                }
-                if (list_ListElement[i].getlist()[j].getType() == 13) {
-                    if (clock_compteur > 20) {
-                        if (*state == 1)
-                            player.gang.set_money(money - player.getCompteur()*10);
-                        if (*state == 2) {
-                            if (player.get_chiffre_pris() == 0) {
-                                if (list_territory[player.tour_cliked->territory].get_nb_unit() - player.getCompteur() >= 0) {
-                                    list_territory[player.tour_cliked->territory].set_nb_unit(list_territory[player.tour_cliked->territory].get_nb_unit() - player.getCompteur());
-                                    player.set_chiffre_pris(player.getCompteur());
-                                }
-                            } else {
-                                list_territory[player.tour_cliked->territory].set_nb_unit(list_territory[player.tour_cliked->territory].get_nb_unit() + player.get_chiffre_pris());
-                                player.set_chiffre_pris(0);
-                            }
-
-
-                        }
-                        player.setCompteur(0);
-
-                        clock_compteur = 0;
-                    }
-
-                }
-                if (list_ListElement[i].getlist()[j].getType() == 22) {
-                    if (clock_compteur > 20) {
-                        player.gang.set_money(money - 100);
-                        clock_compteur = 0;
-                    }
-
-                }
-                if (list_ListElement[i].getlist()[j].getType() == 23) {
-                    if (clock_compteur > 20) {
-                        player.gang.set_money(money - 300);
-                        clock_compteur = 0;
-                    }
-
-                }
-                if (list_ListElement[i].getlist()[j].getType() == 24) {
-                    if (clock_compteur > 20) {
-                        player.gang.set_money(money - 700);
-                        clock_compteur = 0;
-                    }
-
-                }
-
-
-
-            }
-
-            if (list_ListElement[i].getlist()[j].getType() == 16)
-                if (list_ListElement[i].getlist()[j].getStatut() == 1) {
-                    if (list_ListElement[i].getlist()[j].getPosX() != player.tour_cliked->getPosX()) {
-                        delete player.tour_cliked;
-                        player.tour_cliked = new state::Element;
-                        *(player.tour_cliked) = list_ListElement[i].getlist()[j];
-                        player.setCompteur(0);
-                    }
-                }
-
-
-
-        }
-    }
-    if (*state != 1)
-        if (player.tour_cliked->getStatut() == 1) {
-
-            if (*state != 2)
-                player.setCompteur(0);
-            this->setState(2);
-        } else
-
-            this->setState(0);
-
-
-    list_gang[0] = player.gang;
-
-
+    
 }
 
 void state::State::init() {
@@ -460,36 +358,36 @@ void state::State::init() {
 
     state::Territory territory_0(45, 0, 0, 3);
 
-    state::Territory territory_1(0, 1, 0, -1);
-    state::Territory territory_2(0, 2, 0, -1);
+    state::Territory territory_1(10, 1, 0, -1);
+    state::Territory territory_2(10, 2, 0, -1);
     state::Territory territory_3(34, 3, 0, -1);
-    state::Territory territory_4(0, 4, 1, 2);
-    state::Territory territory_5(0, 5, 0, -1);
-    state::Territory territory_6(0, 6, 0, -1);
-    state::Territory territory_7(0, 7, 0, -1);
-    state::Territory territory_8(0, 8, 0, -1);
-    state::Territory territory_9(0, 9, 0, -1);
-    state::Territory territory_10(0, 10, 0, -1);
-    state::Territory territory_11(0, 11, 0, -1);
-    state::Territory territory_12(0, 12, 0, -1);
-    state::Territory territory_13(0, 13, 0, -1);
-    state::Territory territory_14(0, 14, 0, -1);
-    state::Territory territory_15(0, 15, 0, -1);
-    state::Territory territory_16(0, 16, 0, -1);
-    state::Territory territory_17(0, 17, 0, -1);
-    state::Territory territory_18(0, 18, 0, -1);
-    state::Territory territory_19(0, 19, 0, -1);
-    state::Territory territory_20(0, 20, 0, -1);
-    state::Territory territory_21(0, 21, 0, -1);
-    state::Territory territory_22(0, 22, 0, -1);
-    state::Territory territory_23(0, 23, 0, -1);
-    state::Territory territory_24(0, 24, 0, -1);
-    state::Territory territory_25(0, 25, 1, 0);
-    state::Territory territory_26(0, 26, 0, -1);
-    state::Territory territory_27(0, 27, 0, -1);
-    state::Territory territory_28(0, 28, 0, -1);
-    state::Territory territory_29(0, 29, 0, -1);
-    state::Territory territory_30(0, 30, 0, -1);
+    state::Territory territory_4(10, 4, 1, 2);
+    state::Territory territory_5(10, 5, 0, -1);
+    state::Territory territory_6(10, 6, 0, -1);
+    state::Territory territory_7(10, 7, 0, -1);
+    state::Territory territory_8(10, 8, 0, -1);
+    state::Territory territory_9(10, 9, 0, -1);
+    state::Territory territory_10(10, 10, 0, -1);
+    state::Territory territory_11(10, 11, 0, -1);
+    state::Territory territory_12(10, 12, 0, -1);
+    state::Territory territory_13(10, 13, 0, -1);
+    state::Territory territory_14(10, 14, 0, -1);
+    state::Territory territory_15(10, 15, 0, -1);
+    state::Territory territory_16(10, 16, 0, -1);
+    state::Territory territory_17(10, 17, 0, -1);
+    state::Territory territory_18(10, 18, 0, -1);
+    state::Territory territory_19(10, 19, 0, -1);
+    state::Territory territory_20(10, 20, 0, -1);
+    state::Territory territory_21(10, 21, 0, -1);
+    state::Territory territory_22(10, 22, 0, -1);
+    state::Territory territory_23(10, 23, 0, -1);
+    state::Territory territory_24(10, 24, 0, -1);
+    state::Territory territory_25(45, 25, 1, 1);
+    state::Territory territory_26(10, 26, 0, -1);
+    state::Territory territory_27(10, 27, 0, -1);
+    state::Territory territory_28(10, 28, 0, -1);
+    state::Territory territory_29(10, 29, 0, -1);
+    state::Territory territory_30(10, 30, 0, -1);
 
 
     //a ajouter en premier sinon modifier animation

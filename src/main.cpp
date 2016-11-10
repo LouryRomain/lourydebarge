@@ -9,14 +9,18 @@
 
 #include "renderer/View.h"
 #include "renderer/Render.h"
-#include "control/Clavier.h"
-#include "control/Souris.h"
-
+#include "engine/Clavier.h"
+#include "engine/Souris.h"
+#include "engine/Move_unit.h"
+#include "engine/Engine.h"
+#include "ia/IA.h"
 
 
 state::State state_game;
-control::Clavier clavier;
-control::Souris souris;
+engine::Clavier clavier;
+engine::Souris souris;
+engine::Move_unit action(2,0,10);
+engine::Engine game;
 
 int main() {
 
@@ -25,6 +29,7 @@ int main() {
     state_game.init();
     renderer::Render render;
     render.init(state_game);
+    ia::IA bot;
     std::cout << state_game.list_territory.size() << " est le nombre de territoire" << std::endl;
 
 
@@ -37,6 +42,7 @@ int main() {
 
         souris.Update(render.window);
         sf::Event event;
+        
 
    
         for (int i = 0; i < state_game.getListListElement().size(); i++) {
@@ -48,10 +54,22 @@ int main() {
         while (render.window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 render.window.close();
-            else if(event.type==sf::Event::KeyPressed)
-            clavier.gestion_clavier(state_game,sf::Keyboard::B);
+            else if((event.type==sf::Event::KeyPressed))
+                if(sf::Keyboard::isKeyPressed(sf::Keyboard::B))
+                    clavier.gestion_clavier(state_game,sf::Keyboard::B);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+                    clavier.gestion_clavier(state_game,sf::Keyboard::Up);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+                    clavier.gestion_clavier(state_game,sf::Keyboard::Down);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+                    clavier.gestion_clavier(state_game,sf::Keyboard::Left);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+                    clavier.gestion_clavier(state_game,sf::Keyboard::Right);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                    bot.play(state_game);
 
         }
+        game.Update(state_game);
         state_game.upDate();
         render.upDate(state_game);
         render.draw(state_game);

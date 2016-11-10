@@ -9,18 +9,18 @@
 int new_state1;
 int old_state1 = 0;
 
-control::Souris::Souris() {
+engine::Souris::Souris() {
     posY = new int;
     posX = new int;
 
 
 }
 
-control::Souris::~Souris() {
+engine::Souris::~Souris() {
 
 }
 
-void control::Souris::Update(sf::RenderWindow& window) {
+void engine::Souris::Update(sf::RenderWindow& window) {
     sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
 
     //sf::Vector2f worldPos =window.mapPixelToCoords(pixelPos,view);
@@ -33,7 +33,7 @@ void control::Souris::Update(sf::RenderWindow& window) {
 
 }
 
-state::ListElement control::Souris::gestion_souris(state::ListElement list_element, state::Player player, int mode) {
+state::ListElement engine::Souris::gestion_souris(state::ListElement list_element, state::Player player, int mode) {
 
     if (mode == 0)
         if (list_element.getIdView() == 4)

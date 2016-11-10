@@ -4,6 +4,7 @@
 
 state::Territory::Territory() {
     nb_unit = new int;
+    *nb_unit=0;
 }
 
 state::Territory::~Territory() {
@@ -23,11 +24,11 @@ void state::Territory::set_nb_unit(int nb_unit) {
 }
 
 int state::Territory::get_gang() {
-    return *gang;
+    return gang;
 }
 
 void state::Territory::set_gang(int gang) {
-    *this->gang = gang;
+    this->gang = gang;
 }
 
 int state::Territory::get_ID() {
@@ -56,8 +57,7 @@ void state::Territory::addAdjacent(int adjacent) {
 
 state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
     this->QG = QG;
-    gang = new int;
-    *gang = owner;
+    gang = owner;
     this->nb_unit = new int;
     *(this->nb_unit) = nb_unit;
     this->ID = Id;

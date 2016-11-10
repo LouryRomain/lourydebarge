@@ -10,20 +10,18 @@ namespace state {
   class Territory;
   class ListElement;
   class Gang;
-  class IObservateur;
 }
 
 #include "Player.h"
 #include "Territory.h"
 #include "ListElement.h"
 #include "Gang.h"
-#include "IObservateur.h"
 #include "STATE.h"
 
 namespace state {
 
   /// class State - 
-  class State : public state::IObservateur {
+  class State {
     // Associations
     // Attributes
   public:

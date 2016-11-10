@@ -4,6 +4,8 @@
 state::Player::Player() {
     view_posX = new int;
     view_posY = new int;
+    *view_posY=0;
+    *view_posX=0;
     compteur = new int;
     tour_cliked = new state::Element;
     state::Element tour(0, 0, 0, 0);

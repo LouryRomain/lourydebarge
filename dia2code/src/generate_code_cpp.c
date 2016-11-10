@@ -650,8 +650,7 @@ struct stdlib_includes {
    int thread;
    int mutex;
    int graphics;
- 
-    
+   int state;
 
 };
 
@@ -678,7 +677,10 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
            print ("#include <SFML/Graphics.hpp>\n");
            si->graphics = 1;
        }
-	
+	if (!si->graphics && strstr(name,"state::")) {
+           print ("#include <state/Element.h>\n");
+           si->graphics = 1;
+       }
        if (!si->string && strstr(name,"std::string")) {
            print ("#include <string>\n");
            si->string = 1;

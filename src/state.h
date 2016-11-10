@@ -10,6 +10,5 @@
 #include "state/TYPE.h"
 #include "state/STATE_CLICKABLE.h"
 #include "state/STATE.h"
-#include "state/IObservateur.h"
 #include "state/Player.h"
 #endif

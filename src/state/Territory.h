@@ -11,7 +11,7 @@ namespace state {
     // Attributes
   private:
     int* nb_unit;
-    int* gang;
+    int gang;
     int ID;
     bool QG;
     std::vector<int> Adjacent;

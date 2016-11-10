@@ -122,6 +122,7 @@ std::vector<sf::Sprite> renderer::Animation::Update(std::vector<sf::Sprite> list
                     if (list_element.getlist()[i].getStatut() == 2)
                         if ((player.tour_cliked->territory) > 9)
                             this->affiche_chiffre(static_cast<int> ((player.tour_cliked->territory) / 10), list_sprite[i]);
+                        else this->affiche_chiffre(-1, list_sprite[i]);
                     if (list_element.getlist()[i].getStatut() == 1)
                         this->affiche_chiffre(static_cast<int> ((list_territory[player.tour_cliked->territory].get_nb_unit()) / 10), list_sprite[i]);
 
@@ -142,8 +143,9 @@ std::vector<sf::Sprite> renderer::Animation::Update(std::vector<sf::Sprite> list
             if (list_element.getIdView() == 4) {
 
                 if (list_element.getlist()[i].getType() == 5)
-                    if (list_element.getlist()[i].getStatut() != 3)
+                    if (list_element.getlist()[i].getStatut() != 3){
                         this->affiche_chiffre(list_territory[i - 31].get_nb_unit() % 10, list_sprite[i]);
+                    }
                     else {
                         if (player.get_chiffre_pris() != 0) {
                             this->affiche_chiffre((player.get_chiffre_pris() % 10), list_sprite[i]);
@@ -155,7 +157,9 @@ std::vector<sf::Sprite> renderer::Animation::Update(std::vector<sf::Sprite> list
                 if (list_element.getlist()[i].getType() == 6)
                     if (list_element.getlist()[i].getStatut() != 3) {
                         if (list_territory[i - 62].get_nb_unit() > 9)
-                            this->affiche_chiffre(static_cast<int> (list_territory[i - 62].get_nb_unit()) / 10, list_sprite[i]);
+                        this->affiche_chiffre(static_cast<int> (list_territory[i - 62].get_nb_unit()) / 10, list_sprite[i]);
+                        else this->affiche_chiffre(-1, list_sprite[i]);
+                       
                     } else {
                         if (player.get_chiffre_pris() > 9) {
                             this->affiche_chiffre(static_cast<int> ((player.get_chiffre_pris() % 100) / 10), list_sprite[i]);
