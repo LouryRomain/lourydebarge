@@ -29,7 +29,7 @@ int main() {
     state_game.init();
     renderer::Render render;
     render.init(state_game);
-    ia::IA bot;
+    ia::IA bot(1);
     std::cout << state_game.list_territory.size() << " est le nombre de territoire" << std::endl;
 
 
@@ -37,13 +37,17 @@ int main() {
     for (int i = 0; i < state_game.getListListElement().size(); i++)
         std::cout << state_game.getListListElement()[i].getSize() << " est le nombre d'element dans la liste " << i << std::endl;
 
-
+    int pause=0;
+        int count_pause=0;
     while (render.window.isOpen()) {
-
+        
         souris.Update(render.window);
         sf::Event event;
         
-
+        if(pause==1)
+            count_pause++;
+        
+      
    
         for (int i = 0; i < state_game.getListListElement().size(); i++) {
             state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i], state_game.player, state_game.getState());
@@ -65,12 +69,38 @@ int main() {
                     clavier.gestion_clavier(state_game,sf::Keyboard::Left);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
                     clavier.gestion_clavier(state_game,sf::Keyboard::Right);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
                     bot.play(state_game);
-
+                    
+                    for (int i=0;i<state_game.getListListElement().size();i++)
+    if(state_game.getListListElement()[i].getIdView()==4){
+        delete state_game.player.view_posX;
+        state_game.player.view_posX=new int;
+         delete state_game.player.view_posY;
+        state_game.player.view_posY=new int;       
+        if(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()>state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())
+        *state_game.player.view_posY=state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()-300-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())/2);
+        else
+            *state_game.player.view_posY=state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()-300-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())/2);
+       
+          if(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()>state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())  
+        *state_game.player.view_posX=state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()-500-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())/2);
+          else 
+            *state_game.player.view_posX=state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()-500-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())/2);  
+    }
+                    pause=1;}
+                   
+                
         }
+         if(count_pause>30){
+                        pause=0;
+                        count_pause=0;
+                    bot.action.make(state_game);
+                    }
         game.Update(state_game);
         state_game.upDate();
+        bot.Update(state_game);
+      
         render.upDate(state_game);
         render.draw(state_game);
     }

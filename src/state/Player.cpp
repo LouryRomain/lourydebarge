@@ -7,16 +7,23 @@ state::Player::Player() {
     *view_posY=0;
     *view_posX=0;
     compteur = new int;
+    *compteur=0;
     tour_cliked = new state::Element;
     state::Element tour(0, 0, 0, 0);
     *tour_cliked = tour;
     chiffre_pris = new int;
     *chiffre_pris = 0;
+    tour_unit_pris=new int;
+    *tour_unit_pris=-1;
+    gang.ID=2;
+    
 
 }
 
 state::Player::~Player() {
 
+    
+    
 }
 
 void state::Player::Update() {

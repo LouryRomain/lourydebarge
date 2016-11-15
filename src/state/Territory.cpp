@@ -73,22 +73,22 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
         Adjacent.push_back(0);
         Adjacent.push_back(6);
         Adjacent.push_back(7);
-        Adjacent.push_back(3);
+        Adjacent.push_back(5);
 
     }
     if (Id == 2) {
         Adjacent.push_back(0);
-        Adjacent.push_back(5);
+        Adjacent.push_back(3);
         Adjacent.push_back(8);
         Adjacent.push_back(9);
 
 
     }
     if (Id == 3) {
-        Adjacent.push_back(1);
-        Adjacent.push_back(7);
-        Adjacent.push_back(15);
-        Adjacent.push_back(17);
+        Adjacent.push_back(0);
+        Adjacent.push_back(2);
+        Adjacent.push_back(8);
+        Adjacent.push_back(4);
 
 
     }
@@ -101,10 +101,10 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
 
     }
     if (Id == 5) {
-        Adjacent.push_back(0);
-        Adjacent.push_back(2);
-        Adjacent.push_back(4);
-        Adjacent.push_back(8);
+        Adjacent.push_back(1);
+        Adjacent.push_back(7);
+        Adjacent.push_back(13);
+        Adjacent.push_back(17);
 
 
     }
@@ -113,14 +113,14 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
         Adjacent.push_back(7);
         Adjacent.push_back(1);
         Adjacent.push_back(12);
-        Adjacent.push_back(15);
+        Adjacent.push_back(13);
 
     }
     if (Id == 7) {
-        Adjacent.push_back(3);
+        Adjacent.push_back(5);
         Adjacent.push_back(6);
         Adjacent.push_back(1);
-        Adjacent.push_back(15);
+        Adjacent.push_back(13);
 
 
     }
@@ -128,22 +128,22 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
         Adjacent.push_back(5);
         Adjacent.push_back(2);
         Adjacent.push_back(4);
-        Adjacent.push_back(8);
-
+        Adjacent.push_back(11);
+        Adjacent.push_back(10);
 
     }
     if (Id == 9) {
         Adjacent.push_back(2);
         Adjacent.push_back(10);
-        Adjacent.push_back(22);
-        Adjacent.push_back(26);
+        Adjacent.push_back(18);
+        Adjacent.push_back(27);
 
     }
     if (Id == 10) {
         Adjacent.push_back(11);
         Adjacent.push_back(8);
         Adjacent.push_back(9);
-        Adjacent.push_back(22);
+        Adjacent.push_back(20);
         Adjacent.push_back(18);
 
     }
@@ -155,70 +155,83 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
         Adjacent.push_back(20);
 
     }
-    if (Id == 14) {
-        Adjacent.push_back(13);
-        Adjacent.push_back(19);
+    if (Id == 12) {
+        Adjacent.push_back(4);
+        Adjacent.push_back(6);
+        Adjacent.push_back(11);
+        Adjacent.push_back(15);
+        Adjacent.push_back(14);
+
+    }
+    if (Id == 13) {
+        Adjacent.push_back(6);
+        Adjacent.push_back(7);
         Adjacent.push_back(16);
         Adjacent.push_back(15);
+        Adjacent.push_back(5);
+
+    }
+    if (Id == 14) {
+        Adjacent.push_back(11);
         Adjacent.push_back(12);
+        Adjacent.push_back(15);
+        Adjacent.push_back(21);
+        
 
     }
     if (Id == 15) {
         Adjacent.push_back(14);
         Adjacent.push_back(16);
-        Adjacent.push_back(6);
-        Adjacent.push_back(7);
-        Adjacent.push_back(3);
+        Adjacent.push_back(12);
+        Adjacent.push_back(21);
+        Adjacent.push_back(13);
 
     }
     if (Id == 16) {
-        Adjacent.push_back(14);
+        Adjacent.push_back(13);
         Adjacent.push_back(15);
+        Adjacent.push_back(24);
+        Adjacent.push_back(22);
         Adjacent.push_back(17);
-        Adjacent.push_back(21);
-        Adjacent.push_back(23);
 
     }
     if (Id == 17) {
-        Adjacent.push_back(21);
+        Adjacent.push_back(22);
         Adjacent.push_back(16);
         Adjacent.push_back(30);
-        Adjacent.push_back(3);
+        Adjacent.push_back(5);
 
 
     }
 
     if (Id == 18) {
-        Adjacent.push_back(22);
-        Adjacent.push_back(20);
-        Adjacent.push_back(24);
-        Adjacent.push_back(26);
         Adjacent.push_back(10);
+        Adjacent.push_back(20);
+        Adjacent.push_back(27);
+        Adjacent.push_back(9);
 
     }
     if (Id == 19) {
         Adjacent.push_back(20);
         Adjacent.push_back(23);
-        Adjacent.push_back(25);
-        Adjacent.push_back(14);
+        Adjacent.push_back(11);
         Adjacent.push_back(21);
 
     }
     if (Id == 20) {
         Adjacent.push_back(18);
-        Adjacent.push_back(24);
         Adjacent.push_back(19);
-        Adjacent.push_back(13);
-        Adjacent.push_back(11);
+        Adjacent.push_back(27);
+        Adjacent.push_back(10);
+        Adjacent.push_back(23);
 
     }
     if (Id == 21) {
-        Adjacent.push_back(23);
-        Adjacent.push_back(17);
-        Adjacent.push_back(16);
-        Adjacent.push_back(30);
-
-
+        Adjacent.push_back(25);
+        Adjacent.push_back(19);
+        Adjacent.push_back(14);
+        Adjacent.push_back(15);
+        Adjacent.push_back(24);
     }
     if (Id == 22) {
         Adjacent.push_back(24);
@@ -228,23 +241,23 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
 
     }
     if (Id == 23) {
-        Adjacent.push_back(21);
+        Adjacent.push_back(20);
         Adjacent.push_back(25);
         Adjacent.push_back(19);
-        Adjacent.push_back(16);
-        Adjacent.push_back(30);
+        Adjacent.push_back(26);
+        Adjacent.push_back(28);
 
     }
     if (Id == 24) {
-        Adjacent.push_back(20);
-        Adjacent.push_back(18);
-        Adjacent.push_back(27);
-        Adjacent.push_back(28);
+        Adjacent.push_back(21);
+        Adjacent.push_back(16);
+        Adjacent.push_back(22);
+        Adjacent.push_back(30);
         Adjacent.push_back(25);
 
     }
     if (Id == 25) {
-        Adjacent.push_back(19);
+        
         Adjacent.push_back(23);
         Adjacent.push_back(24);
         Adjacent.push_back(26);
@@ -253,29 +266,29 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
 
     }
     if (Id == 26) {
-        Adjacent.push_back(22);
-        Adjacent.push_back(18);
-        Adjacent.push_back(9);
-        Adjacent.push_back(27);
+        Adjacent.push_back(23);
+        Adjacent.push_back(28);
+        Adjacent.push_back(29);
+        Adjacent.push_back(25);
 
     }
     if (Id == 27) {
-        Adjacent.push_back(26);
-        Adjacent.push_back(24);
+        Adjacent.push_back(9);
+        Adjacent.push_back(18);
         Adjacent.push_back(28);
-        Adjacent.push_back(29);
+        Adjacent.push_back(20);
 
     }
     if (Id == 28) {
         Adjacent.push_back(27);
-        Adjacent.push_back(24);
-        Adjacent.push_back(25);
+        Adjacent.push_back(23);
+        Adjacent.push_back(26);
         Adjacent.push_back(29);
 
     }
     if (Id == 29) {
         Adjacent.push_back(30);
-        Adjacent.push_back(27);
+        Adjacent.push_back(26);
         Adjacent.push_back(28);
         Adjacent.push_back(25);
 
@@ -283,8 +296,8 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
     }
     if (Id == 30) {
         Adjacent.push_back(29);
-        Adjacent.push_back(23);
-        Adjacent.push_back(21);
+        Adjacent.push_back(24);
+        Adjacent.push_back(22);
         Adjacent.push_back(17);
 
     }

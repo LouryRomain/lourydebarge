@@ -96,25 +96,28 @@ void engine::Engine::Update (state::State& state){
 
             if (state.getListListElement()[i].getlist()[j].getType() == 16)
                 if (state.getListListElement()[i].getlist()[j].getStatut() == 1) {
-                   // if(state.player.get_chiffre_pris()==0){
-                    //if(state.list_territory[state.getListListElement()[i].getlist()[j].territory].get_gang()==2)
-                    if (state.getListListElement()[i].getlist()[j].getPosX() != state.player.tour_cliked->getPosX()) {
-                        delete state.player.tour_cliked;
-                        state.player.tour_cliked = new state::Element;
-                        *(state.player.tour_cliked) = state.getListListElement()[i].getlist()[j];
-                        state.player.setCompteur(0);
-                    }}
-                    else {/*for(int v=0;v<state.list_territory[state.getListListElement()[i].getlist()[j].territory].getAdajcent().size();v++)
-                        if (state.list_territory[state.getListListElement()[i].getlist()[j].territory].getAdajcent()[v]==state.getListListElement()[i].getlist()[j].territory){
+                    if (state.player.get_chiffre_pris() == 0){
+                       if (state.list_territory[state.getListListElement()[i].getlist()[j].territory].get_gang() == state.player.gang.ID)
+                            if (state.getListListElement()[i].getlist()[j].getPosX() != state.player.tour_cliked->getPosX()) {
+                                delete state.player.tour_cliked;
+                                state.player.tour_cliked = new state::Element;
+                                *(state.player.tour_cliked) = state.getListListElement()[i].getlist()[j];
+                                delete state.player.tour_unit_pris;
+                                state.player.tour_unit_pris=new int;
+                                *(state.player.tour_unit_pris)=state.getListListElement()[i].getlist()[j].territory;
+                                state.player.setCompteur(0);
+                            }
+                }
+                    else {for(int v=0;v<state.list_territory[*(state.player.tour_unit_pris)].getAdajcent().size();v++)
+                        if (state.list_territory[*(state.player.tour_unit_pris)].getAdajcent()[v]==state.getListListElement()[i].getlist()[j].territory){
                             
                             delete state.player.tour_cliked;
                         state.player.tour_cliked = new state::Element;
                         *(state.player.tour_cliked) = state.getListListElement()[i].getlist()[j];
                         state.player.setCompteur(0);}
                         
-                    }*/
-                    
-                    }
+                                        
+                    }}
 
 
 
@@ -129,4 +132,11 @@ void engine::Engine::Update (state::State& state){
         } else
 
             state.setState(0);
+    
+    for(int i=0;i<state.list_territory.size();i++){
+        if(state.list_territory[i].get_nb_unit()==0)
+            state.list_territory[i].set_gang(-1);
+        
+    }
 }
+

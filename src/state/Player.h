@@ -22,6 +22,7 @@ namespace state {
     int* view_posY;
     state::Gang gang;
     state::Element* tour_cliked;
+    int* tour_unit_pris;
   private:
     int* compteur;
     int* chiffre_pris;
