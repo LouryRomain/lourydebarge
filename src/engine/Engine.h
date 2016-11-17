@@ -2,6 +2,7 @@
 #ifndef ENGINE__ENGINE__H
 #define ENGINE__ENGINE__H
 
+#include <vector>
 #include <state/Element.h>
 
 namespace engine {
@@ -17,9 +18,12 @@ namespace engine {
 
   /// class Engine - 
   class Engine {
+    // Associations
     // Attributes
   public:
     engine::Move_unit action;
+    std::vector<int> list_gang;
+    int round;
     // Operations
   public:
     Engine ();

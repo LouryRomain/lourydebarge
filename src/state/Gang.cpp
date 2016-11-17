@@ -3,7 +3,12 @@
 #include "Gang.h"
 
 state::Gang::Gang() {
-    money = 6666;
+    money=new int;
+    *money =0;
+    action_done=new int;
+    *action_done=0;
+    turn=new int;
+    *turn=0;
 
 }
 
@@ -21,11 +26,13 @@ int state::Gang::get_nb_card_gang() {
 
 void state::Gang::set_money(int money) {
     if (money >= 0)
-        this->money = money;
+        delete this->money;
+    this->money=new int;
+    *this->money=money;
 }
 
 int state::Gang::get_money() {
-    return money;
+    return *money;
 }
 
 void state::Gang::set_alive(bool alive) {
@@ -52,4 +59,23 @@ std::vector<int> state::Gang::getListTerritory() {
     return list_territory;
 }
 
+void state::Gang::setAction_done(int nb){
+    delete this->action_done;
+    this->action_done=new int;
+    *action_done=nb;
+}
 
+void state::Gang::setTurn(int turn){
+    delete this->turn;
+    this->turn=new int;
+    *this->turn=turn;
+}
+
+
+int state::Gang::getAction_done(){
+    return *action_done;
+}
+
+int state::Gang::getTurn(){
+    return *turn;
+}

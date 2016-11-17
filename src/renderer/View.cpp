@@ -97,7 +97,7 @@ void renderer::View::View_init(state::State& state) {
     rectangle.setOutlineThickness(thickness_rectangle);
     rectangle.setScale(minimap_scale);
 
-    if (type == 4) {
+    if ((type == 4)) {
         tile.convert(level_1_path);
         Background.load(tile_texture_path, tile_dim, tile.tiles, tile.image_dim.x, tile.image_dim.y);
         for (int j = 0; j < state.getListListElement().size(); j++) {
@@ -109,6 +109,7 @@ void renderer::View::View_init(state::State& state) {
 
                 }
             }
+            
             if (state.getListListElement()[j].getIdView() == type) {
                 for (int i = 0; i < tile.pos_chiffre.size(); i++) {
 
@@ -192,6 +193,13 @@ void renderer::View::draw(sf::RenderWindow& window, int mode) {
             
             if ((type == 5))
                 window.draw(list_sprite[i]);
+            if ((type == 2)){
+                list_sprite[i].setScale(0.5f,0.5f);
+                list_sprite[i].setPosition(list_sprite[i].getPosition().x*0.25f,list_sprite[i].getPosition().y*0.25f);
+                window.draw(list_sprite[i]);
+                list_sprite[i].setPosition(list_sprite[i].getPosition().x*4,list_sprite[i].getPosition().y*4);
+                list_sprite[i].setScale(2,2);
+            }
             
 
         }
@@ -208,12 +216,19 @@ void renderer::View::draw(sf::RenderWindow& window, int mode) {
                 window.draw(list_sprite[i]);
             
             }
+           if ((type == 2)){
+                list_sprite[i].setScale(0.5f,0.5f);
+                list_sprite[i].setPosition(list_sprite[i].getPosition().x*0.25f,list_sprite[i].getPosition().y*0.25f);
+                window.draw(list_sprite[i]);
+                list_sprite[i].setPosition(list_sprite[i].getPosition().x*4,list_sprite[i].getPosition().y*4);
+                list_sprite[i].setScale(2,2);
+            }
              
             if ((type == 3) || (type == 5))
                 window.draw(list_sprite[i]);
         }
            
-
+        
         if (mode == 1)
             if ((type == 1) || (type == 5))
 

@@ -16,6 +16,7 @@ state::Player::Player() {
     tour_unit_pris=new int;
     *tour_unit_pris=-1;
     gang.ID=2;
+    gang.setTurn(1);
     
 
 }

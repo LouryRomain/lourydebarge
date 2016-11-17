@@ -19,7 +19,7 @@
 state::State state_game;
 engine::Clavier clavier;
 engine::Souris souris;
-engine::Move_unit action(2,0,10);
+engine::Move_unit action(2, 0, 10);
 engine::Engine game;
 
 int main() {
@@ -30,6 +30,9 @@ int main() {
     renderer::Render render;
     render.init(state_game);
     ia::IA bot(1);
+    state::Gang bot1;
+    bot1.ID = 1;
+    state_game.add_Gang(bot1);
     std::cout << state_game.list_territory.size() << " est le nombre de territoire" << std::endl;
 
 
@@ -37,18 +40,23 @@ int main() {
     for (int i = 0; i < state_game.getListListElement().size(); i++)
         std::cout << state_game.getListListElement()[i].getSize() << " est le nombre d'element dans la liste " << i << std::endl;
 
-    int pause=0;
-        int count_pause=0;
+    int pause = 0;
+    int count_pause = 0;
+    int count_pause2 = 0;
+    int transi = 0;
     while (render.window.isOpen()) {
-        
-        souris.Update(render.window);
+        if (state_game.player.gang.getTurn() == 1)
+            souris.Update(render.window);
         sf::Event event;
-        
-        if(pause==1)
+
+        if (pause == 1)
             count_pause++;
-        
-      
-   
+        if (transi == 1) {
+            count_pause2++;
+
+        }
+
+
         for (int i = 0; i < state_game.getListListElement().size(); i++) {
             state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i], state_game.player, state_game.getState());
         }
@@ -56,51 +64,69 @@ int main() {
 
 
         while (render.window.pollEvent(event)) {
+
+
             if (event.type == sf::Event::Closed)
                 render.window.close();
-            else if((event.type==sf::Event::KeyPressed))
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::B))
-                    clavier.gestion_clavier(state_game,sf::Keyboard::B);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-                    clavier.gestion_clavier(state_game,sf::Keyboard::Up);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-                    clavier.gestion_clavier(state_game,sf::Keyboard::Down);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-                    clavier.gestion_clavier(state_game,sf::Keyboard::Left);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-                    clavier.gestion_clavier(state_game,sf::Keyboard::Right);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)){
-                    bot.play(state_game);
-                    
-                    for (int i=0;i<state_game.getListListElement().size();i++)
-    if(state_game.getListListElement()[i].getIdView()==4){
-        delete state_game.player.view_posX;
-        state_game.player.view_posX=new int;
-         delete state_game.player.view_posY;
-        state_game.player.view_posY=new int;       
-        if(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()>state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())
-        *state_game.player.view_posY=state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()-300-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())/2);
-        else
-            *state_game.player.view_posY=state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()-300-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())/2);
-       
-          if(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()>state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())  
-        *state_game.player.view_posX=state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()-500-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())/2);
-          else 
-            *state_game.player.view_posX=state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()-500-static_cast<int>(std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX()-state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())/2);  
-    }
-                    pause=1;}
-                   
-                
+            else if ((event.type == sf::Event::KeyPressed)) {
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)&&(state_game.player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::B);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)&&(state_game.player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Up);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)&&(state_game.player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Down);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)&&(state_game.player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Left);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)&&(state_game.player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Right);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                    bot1.setTurn(1);
+                }
+            }
         }
-         if(count_pause>30){
-                        pause=0;
-                        count_pause=0;
-                    bot.action.make(state_game);
-                    }
+
+
+        if (bot1.getTurn() == 1) {
+            bot1.setTurn(0);
+            bot.play(state_game);
+
+            for (int i = 0; i < state_game.getListListElement().size(); i++)
+                if (state_game.getListListElement()[i].getIdView() == 4) {
+                    delete state_game.player.view_posX;
+                    state_game.player.view_posX = new int;
+                    delete state_game.player.view_posY;
+                    state_game.player.view_posY = new int;
+                    if (state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() > state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())
+                        *state_game.player.view_posY = state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - 300 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()) / 2);
+                    else
+                        *state_game.player.view_posY = state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY() - 300 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()) / 2);
+
+                    if (state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() > state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())
+                        *state_game.player.view_posX = state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - 500 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()) / 2);
+                    else
+                        *state_game.player.view_posX = state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX() - 500 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()) / 2);
+                }
+            pause = 1;
+        }
+        if (count_pause > 30) {
+            pause = 0;
+            count_pause = 0;
+            bot.action.make(state_game);
+
+            transi = 1;
+        }
+        if (count_pause2 > 30) {
+            transi = 0;
+            count_pause2 = 0;
+            bot1.setAction_done(bot1.getAction_done() + 1);
+            bot1.setTurn(1);
+        }
+
+
         game.Update(state_game);
         state_game.upDate();
         bot.Update(state_game);
-      
+
         render.upDate(state_game);
         render.draw(state_game);
     }

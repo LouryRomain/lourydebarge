@@ -3,4 +3,6 @@
 #define __IA__H
 
 #include "ia/IA.h"
+#include "ia/Attack.h"
+#include "ia/Defence.h"
 #endif

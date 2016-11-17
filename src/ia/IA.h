@@ -10,14 +10,21 @@ namespace engine {
 };
 namespace state {
   class State;
+};
+namespace ia {
+  class Defence;
+  class Attack;
 }
 
 #include "engine/Move_unit.h"
+#include "Defence.h"
+#include "Attack.h"
 
 namespace ia {
 
   /// class IA - 
   class IA {
+    // Associations
     // Attributes
   public:
     engine::Move_unit action;

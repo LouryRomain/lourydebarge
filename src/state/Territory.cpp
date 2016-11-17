@@ -16,11 +16,14 @@ int state::Territory::get_nb_unit() {
 }
 
 void state::Territory::set_nb_unit(int nb_unit) {
-    if ((*this->nb_unit >= 0) || (*this->nb_unit < 100)) {
+    if  (nb_unit < 100) {
         delete this->nb_unit;
         this->nb_unit = new int;
         *(this->nb_unit) = nb_unit;
     }
+    else {delete this->nb_unit;
+        this->nb_unit = new int;
+        *(this->nb_unit) = 99;}
 }
 
 int state::Territory::get_gang() {
@@ -176,6 +179,7 @@ state::Territory::Territory(int nb_unit, int Id, bool QG, int owner) {
         Adjacent.push_back(12);
         Adjacent.push_back(15);
         Adjacent.push_back(21);
+        Adjacent.push_back(19);
         
 
     }

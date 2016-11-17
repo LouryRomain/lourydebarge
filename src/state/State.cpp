@@ -21,6 +21,15 @@ int state::State::getState() {
     return *state;
 }
 
+std::vector<state::Territory> state::State::getlistterritorygang(int gang){
+    std::vector<state::Territory> list;
+    for (int i=0;i<list_territory.size();i++)
+        if(list_territory[i].get_gang()==gang)
+            list.push_back(list_territory[i]);
+    return list;
+        
+}
+
 void state::State::setState(int state) {
     delete this->state;
     this->state = new int;
@@ -39,12 +48,14 @@ std::vector<state::Gang> state::State::getListGang() {
     return list_gang;
 }
 
-void state::State::add_Gang(state::Gang Gang) {
+void state::State::add_Gang(state::Gang& Gang) {
     this->list_gang.push_back(Gang);
 }
 
 void state::State::upDate() {
-    
+    for (int i=0;i<list_gang.size();i++)
+        if(list_gang[i].ID==player.gang.ID)
+            player.gang.set_money(list_gang[i].get_money());
 }
 
 void state::State::init() {
@@ -237,7 +248,39 @@ void state::State::init() {
     list_map.add_element(tour29);
     list_map.add_element(tour30);
 
-
+    
+    list_minimap.add_element(tour0);
+    list_minimap.add_element(tour1);
+    list_minimap.add_element(tour2);
+    list_minimap.add_element(tour3);
+    list_minimap.add_element(tour4);
+    list_minimap.add_element(tour5);
+    list_minimap.add_element(tour6);
+    list_minimap.add_element(tour7);
+    list_minimap.add_element(tour8);
+    list_minimap.add_element(tour9);
+    list_minimap.add_element(tour10);
+    list_minimap.add_element(tour11);
+    list_minimap.add_element(tour12);
+    list_minimap.add_element(tour13);
+    list_minimap.add_element(tour14);
+    list_minimap.add_element(tour15);
+    list_minimap.add_element(tour16);
+    list_minimap.add_element(tour17);
+    list_minimap.add_element(tour18);
+    list_minimap.add_element(tour19);
+    list_minimap.add_element(tour20);
+    list_minimap.add_element(tour21);
+    list_minimap.add_element(tour22);
+    list_minimap.add_element(tour23);
+    list_minimap.add_element(tour24);
+    list_minimap.add_element(tour25);
+    list_minimap.add_element(tour26);
+    list_minimap.add_element(tour27);
+    list_minimap.add_element(tour28);
+    list_minimap.add_element(tour29);
+    list_minimap.add_element(tour30);
+    
     list_map.add_element(chiffre_unite_0);
     list_map.add_element(chiffre_unite_1);
     list_map.add_element(chiffre_unite_2);
@@ -382,7 +425,7 @@ void state::State::init() {
     state::Territory territory_22(0, 22, 0, -1);
     state::Territory territory_23(0, 23, 0, -1);
     state::Territory territory_24(0, 24, 0, -1);
-    state::Territory territory_25(40, 25, 1, 1);
+    state::Territory territory_25(31, 25, 1, 1);
     state::Territory territory_26(0, 26, 0, -1);
     state::Territory territory_27(0, 27, 0, -1);
     state::Territory territory_28(0, 28, 0, -1);

@@ -40,10 +40,11 @@ namespace state {
     std::vector<ListElement> getListListElement ();
     void add_ListElement (state::ListElement ListElement);
     std::vector<Gang> getListGang ();
-    void add_Gang (state::Gang Gang);
+    void add_Gang (state::Gang& Gang);
     void upDate ();
     void init ();
     void notifier ();
+    std::vector<state::Territory> getlistterritorygang (int gang);
   };
 
 };

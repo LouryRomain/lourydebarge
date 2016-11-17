@@ -13,11 +13,13 @@ namespace state {
   public:
     int ID;
   private:
-    int money;
+    int* money;
     int nb_card_gang;
     bool alive;
     std::string name;
     std::vector<int> list_territory;
+    int* action_done;
+    int* turn;
     // Operations
   public:
     Gang ();
@@ -32,6 +34,10 @@ namespace state {
     void set_name (std::string name);
     void setListTerritory (std::vector<int> list_territory);
     std::vector<int> getListTerritory ();
+    int getTurn ();
+    void setTurn (int turn);
+    int getAction_done ();
+    void setAction_done (int nb);
   };
 
 };
