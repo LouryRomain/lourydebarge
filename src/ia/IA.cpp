@@ -43,7 +43,7 @@ void ia::IA::play(const state::State& state) {
         
 
     ia::MinMax minmax;
-    minmax.create_tree(state,gang,3);
+    minmax.create_tree(state,gang,2);
     int nb_attack=minmax.solve(state,gang,minmax.tree);
  
        action.id_terr_to = list_action[nb_attack].id_terr_to;

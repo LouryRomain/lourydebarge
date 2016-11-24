@@ -95,7 +95,7 @@ void ia::MinMax::score(ia::Node& node, const state::State& state, int gang) {
 }
 
 int ia::MinMax::solve(const state::State& state, int gang,std::vector<ia::Node> tree) {
-    int depth = 3;
+    int depth = 2;
     
    
     std::vector<int> layer_child;
