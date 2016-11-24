@@ -10,10 +10,13 @@ namespace renderer {
 };
 namespace state {
   class State;
+};
+namespace ihm {
+  class Player;
 }
 
 #include "Textures.h"
-#include "state/State.h"
+#include "ihm/Player.h"
 
 namespace renderer {
 
@@ -30,10 +33,10 @@ namespace renderer {
   public:
     View (int view);
     ~View ();
-    void View_init (state::State& state);
+    void View_init (const state::State& state);
     void draw (sf::RenderWindow& window, int mode);
     void add_Sprite (sf::Sprite sprite);
-    void View_upDate (state::State state);
+    void View_upDate (const state::State& state, ihm::Player player);
   };
 
 };

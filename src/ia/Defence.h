@@ -24,10 +24,10 @@ namespace ia {
     std::vector<int> list_score;
     // Operations
   public:
-    int score_defence (state::State& state);
+    int score_defence (const state::State& state);
     Defence ();
     ~Defence ();
-    void init (state::State& state, int gang);
+    void init (const state::State& state, int gang);
   };
 
 };

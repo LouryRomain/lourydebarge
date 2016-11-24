@@ -9,19 +9,16 @@ int plage_commune_dimX = 235;
 
 
 state::State::State() {
-    state = new int;
-    *state = 1;
+  
 }
 
 state::State::~State() {
 
 }
 
-int state::State::getState() {
-    return *state;
-}
 
-std::vector<state::Territory> state::State::getlistterritorygang(int gang){
+
+std::vector<state::Territory> state::State::getlistterritorygang(int gang) const {
     std::vector<state::Territory> list;
     for (int i=0;i<list_territory.size();i++)
         if(list_territory[i].get_gang()==gang)
@@ -30,13 +27,9 @@ std::vector<state::Territory> state::State::getlistterritorygang(int gang){
         
 }
 
-void state::State::setState(int state) {
-    delete this->state;
-    this->state = new int;
-    *(this->state) = state;
-}
 
-std::vector<state::ListElement> state::State::getListListElement() {
+
+std::vector<state::ListElement> state::State::getListListElement() const {
     return list_ListElement;
 }
 
@@ -44,23 +37,46 @@ void state::State::add_ListElement(state::ListElement ListElement) {
     this->list_ListElement.push_back(ListElement);
 }
 
-std::vector<state::Gang> state::State::getListGang() {
+std::vector<state::Gang> state::State::getListGang() const {
     return list_gang;
 }
 
 void state::State::add_Gang(state::Gang& Gang) {
     this->list_gang.push_back(Gang);
 }
+void state::State::add_territory(state::Territory territory){
+    list_territory.push_back(territory);
+}
+std::vector<state::Territory> state::State::get_list_territory() const{
+    return list_territory;
+}
+
+void state::State::set_list_element(std::vector<state::ListElement> list_element){
+    list_ListElement=list_element;
+}
+void state::State::set_list_gang(std::vector<state::Gang> list_gang){
+    this->list_gang=list_gang;
+}
+void state::State::set_list_territory(std::vector<state::Territory> list_territory){
+    this->list_territory=list_territory;
+}
+
+state::State state::State::clone() const{
+    state::State st;
+    for(int i=0;i<list_territory.size();i++)
+    st.add_territory(list_territory[i].clone());
+    return st;
+}
 
 void state::State::upDate() {
-    for (int i=0;i<list_gang.size();i++)
-        if(list_gang[i].ID==player.gang.ID)
-            player.gang.set_money(list_gang[i].get_money());
+   // for (int i=0;i<list_gang.size();i++)
+      //  if(list_gang[i].ID==player.gang.ID)
+       //     player.gang.set_money(list_gang[i].get_money());
 }
 
 void state::State::init() {
 
-    list_gang.push_back(player.gang);
+    //list_gang.push_back(player.gang);
     state::Element background(0, 0, 12);
     state::Element carte_verso_A(30, 350, 2);
     state::Element carte_verso_B(490, 350, 2);
@@ -399,12 +415,12 @@ void state::State::init() {
     this->add_ListElement(list_plage_commune);
 
 
-    state::Territory territory_0(45, 0, 0, 3);
+    state::Territory territory_0(0, 0, 0, -1);
 
     state::Territory territory_1(0, 1, 0, -1);
     state::Territory territory_2(0, 2, 0, -1);
-    state::Territory territory_3(0, 3, 0, -1);
-    state::Territory territory_4(40, 4, 1, 2);
+    state::Territory territory_3(40, 3, 1, 2);
+    state::Territory territory_4(0, 4, 0, -1);
     state::Territory territory_5(0, 5, 0, -1);
     state::Territory territory_6(0, 6, 0, -1);
     state::Territory territory_7(0, 7, 0, -1);
@@ -422,10 +438,10 @@ void state::State::init() {
     state::Territory territory_19(0, 19, 0, -1);
     state::Territory territory_20(0, 20, 0, -1);
     state::Territory territory_21(0, 21, 0, -1);
-    state::Territory territory_22(0, 22, 0, -1);
+    state::Territory territory_22(31, 22, 1, 1);
     state::Territory territory_23(0, 23, 0, -1);
     state::Territory territory_24(0, 24, 0, -1);
-    state::Territory territory_25(31, 25, 1, 1);
+    state::Territory territory_25(0, 25, 0, -1);
     state::Territory territory_26(0, 26, 0, -1);
     state::Territory territory_27(0, 27, 0, -1);
     state::Territory territory_28(0, 28, 0, -1);

@@ -20,7 +20,7 @@ void state::Gang::set_nb_card_gang(int nb_card_gang) {
     this->nb_card_gang = nb_card_gang;
 }
 
-int state::Gang::get_nb_card_gang() {
+int state::Gang::get_nb_card_gang() const {
     return nb_card_gang;
 }
 
@@ -31,7 +31,7 @@ void state::Gang::set_money(int money) {
     *this->money=money;
 }
 
-int state::Gang::get_money() {
+int state::Gang::get_money() const  {
     return *money;
 }
 
@@ -39,11 +39,11 @@ void state::Gang::set_alive(bool alive) {
     this->alive = alive;
 }
 
-bool state::Gang::get_alive() {
+bool state::Gang::get_alive() const {
     return alive;
 }
 
-std::string state::Gang::get_name() {
+std::string state::Gang::get_name() const {
     return name;
 }
 
@@ -55,7 +55,7 @@ void state::Gang::setListTerritory(std::vector<int> list_territory) {
     this->list_territory = list_territory;
 }
 
-std::vector<int> state::Gang::getListTerritory() {
+std::vector<int> state::Gang::getListTerritory() const {
     return list_territory;
 }
 
@@ -72,10 +72,10 @@ void state::Gang::setTurn(int turn){
 }
 
 
-int state::Gang::getAction_done(){
+int state::Gang::getAction_done() const {
     return *action_done;
 }
 
-int state::Gang::getTurn(){
+int state::Gang::getTurn() const {
     return *turn;
 }

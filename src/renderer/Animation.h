@@ -7,7 +7,11 @@
 
 namespace state {
   class ListElement;
+};
+namespace ihm {
   class Player;
+};
+namespace state {
   class Territory;
 };
 namespace renderer {
@@ -26,7 +30,7 @@ namespace renderer {
   public:
     Animation ();
     ~Animation ();
-    std::vector<sf::Sprite> Update (std::vector<sf::Sprite> list_sprite, state::ListElement list_element, state::Player& player, std::vector<state::Territory> list_territory);
+    std::vector<sf::Sprite> Update (std::vector<sf::Sprite> list_sprite, const state::ListElement list_element, ihm::Player& player, const std::vector<state::Territory> list_territory);
     sf::Sprite affiche_chiffre (int chiffre, sf::Sprite& sprite);
   };
 

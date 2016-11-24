@@ -21,13 +21,23 @@ namespace ia {
     // Attributes
   public:
     std::vector<engine::Move_unit> list_attack;
+    std::vector<int> unit_max_1_to;
+    std::vector<int> unit_max_1_from;
     std::vector<int> list_score;
+    std::vector<int> unit_max_2_to;
+    std::vector<int> unit_max_2_from;
+    std::vector<int> unit_max_3_to;
+    std::vector<int> unit_max_3_from;
+    std::vector<int> unit_to_conquer_2;
+    std::vector<int> unit_to_conquer_3;
+    std::vector<std::vector<int>> list_discrimi;
     // Operations
   public:
-    void score_attack (state::State& state);
+    void create_tab (const state::State& state, int gang);
     Attack ();
     ~Attack ();
-    void init (state::State& state, int gang);
+    void init (const state::State& state, int gang);
+    void score_attack (const state::State& state);
   };
 
 };

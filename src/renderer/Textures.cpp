@@ -15,7 +15,7 @@ renderer::Textures::~Textures() {
 
 };
 
-void renderer::Textures::load_texture(state::Element element) {
+void renderer::Textures::load_texture(const state::Element element) {
 
 
     std::string path;

@@ -1,5 +1,5 @@
 #include "Animation.h"
-#include "state/Player.h"
+#include "ihm/Player.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -13,7 +13,7 @@ renderer::Animation::~Animation() {
 
 }
 
-std::vector<sf::Sprite> renderer::Animation::Update(std::vector<sf::Sprite> list_sprite, state::ListElement list_element, state::Player& player, std::vector<state::Territory> list_territory) {
+std::vector<sf::Sprite> renderer::Animation::Update(std::vector<sf::Sprite> list_sprite, state::ListElement list_element, ihm::Player& player, std::vector<state::Territory> list_territory) {
 
 
     for (int i = 0; i < list_element.getSize(); i++) {

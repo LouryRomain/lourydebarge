@@ -3,10 +3,15 @@
 #define ENGINE__MOVE_UNIT__H
 
 #include <state/Element.h>
+#include <vector>
 
 namespace state {
   class State;
+};
+namespace engine {
+  class Move_unit;
 }
+
 
 namespace engine {
 
@@ -21,8 +26,9 @@ namespace engine {
   public:
     Move_unit (int id_terr_to, int id_terr_from, int nb_unit);
     ~Move_unit ();
-    void make (state::State& state);
+    void make (state::State& state, std::vector<engine::Move_unit>& list_action);
     Move_unit ();
+    void demake (state::State& state, std::vector<engine::Move_unit>& list_action);
   };
 
 };

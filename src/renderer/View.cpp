@@ -91,7 +91,7 @@ renderer::View::~View() {
 
 }
 
-void renderer::View::View_init(state::State& state) {
+void renderer::View::View_init(const state::State& state) {
     rectangle.setFillColor(sf::Color::Transparent);
     rectangle.setOutlineColor(sf::Color::Red);
     rectangle.setOutlineThickness(thickness_rectangle);
@@ -244,13 +244,13 @@ void renderer::View::add_Sprite(sf::Sprite sprite) {
     list_sprite.push_back(sprite);
 }
 
-void renderer::View::View_upDate(state::State state) {
+void renderer::View::View_upDate(const state::State& state,ihm::Player player) {
     for (int i = 0; i < state.getListListElement().size(); i++)
         if (type == state.getListListElement()[i].getIdView())
     if ((type == 4)||(type==1)||(type==2)||(type==3)||(type==5))
-            list_sprite = animation.Update(list_sprite, state.getListListElement()[i], state.player, state.list_territory);
+            list_sprite = animation.Update(list_sprite, state.getListListElement()[i], player, state.get_list_territory());
     if (type == 4)
-        view.reset(sf::FloatRect(*(state.player.view_posX), *(state.player.view_posY), 1200, 700));
+        view.reset(sf::FloatRect(*(player.view_posX), *(player.view_posY), 1200, 700));
     if (type == 2)
-        rectangle.setPosition(*(state.player.view_posX) * minimap_scale.x, *(state.player.view_posY) * minimap_scale.y);
+        rectangle.setPosition(*(player.view_posX) * minimap_scale.x, *(player.view_posY) * minimap_scale.y);
 }

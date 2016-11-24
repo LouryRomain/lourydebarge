@@ -21,7 +21,7 @@ state::Element::Element(int posX, int posY, int type) {
     *statut = 0;
 }
 
-int state::Element::getType() {
+int state::Element::getType() const {
     return this->type;
 }
 
@@ -29,11 +29,11 @@ void state::Element::setType(int type) {
     this->type = type;
 }
 
-int state::Element::getPosX() {
+int state::Element::getPosX() const {
     return *posX;
 }
 
-int state::Element::getPosY() {
+int state::Element::getPosY() const {
     return *posY;
 }
 
@@ -84,7 +84,7 @@ state::Element::Element(int posX, int posY, int type, int statut, int territory)
 
 }
 
-int state::Element::getStatut() {
+int state::Element::getStatut() const {
     return *statut;
 }
 

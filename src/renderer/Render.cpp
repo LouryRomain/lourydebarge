@@ -26,7 +26,7 @@ renderer::Render::~Render() {
 
 }
 
-void renderer::Render::init(state::State state_game) {
+void renderer::Render::init(const state::State state_game) {
 
     window.create(sf::VideoMode(window_width, window_heigth), window_title);
     window.setPosition(pos_window);
@@ -43,24 +43,24 @@ void renderer::Render::init(state::State state_game) {
     for (int i = 0; i < list_view.size(); i++)
         list_view[i].View_init(state_game);
 
-    std::cout << state_game.getState() << " est le statut " << std::endl;
+    //std::cout << state_game.getState() << " est le statut " << std::endl;
     //for(int i=0;i<list_view.size();i++)
     //std::cout<<view_boutique.list_sprite.size()<<std::endl;
 }
 
-void renderer::Render::draw(state::State state_game) {
+void renderer::Render::draw(ihm::Player player) {
     for (int i = 0; i < list_view.size(); i++) {
 
-        list_view[i].draw(window, state_game.getState());
+        list_view[i].draw(window, player.get_state());
     }
 
     window.display();
     window.clear();
 }
 
-void renderer::Render::upDate(state::State state_game) {
+void renderer::Render::upDate(const state::State state_game,ihm::Player player) {
     for (int i = 0; i < list_view.size(); i++) {
 
-        list_view[i].View_upDate(state_game);
+        list_view[i].View_upDate(state_game,player);
     }
 }

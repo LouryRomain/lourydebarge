@@ -20,17 +20,17 @@ namespace state {
   public:
     Element ();
     ~Element ();
-    int getType ();
+    int getType () const;
     void setType (int type);
-    int getPosX ();
-    int getPosY ();
+    int getPosX () const;
+    int getPosY () const;
     void setPosX (int posX, int posY);
     Element (int posX, int posY, int type);
     Element (int posX, int posY, int type, int statut);
     bool isClickable ();
     bool isChiffre ();
     Element (int posX, int posY, int type, int statut, int territory);
-    int getStatut ();
+    int getStatut () const;
     void setStatut (int statut);
   };
 

@@ -35,13 +35,13 @@ namespace ia {
   public:
     IA (int gang);
     ~IA ();
-    void play (state::State& state);
-    int get_gang ();
+    void play (const state::State& state);
+    int get_gang () const;
     void set_gang ( int gang);
-    std::vector<int> get_List ();
+    std::vector<int> get_List () const;
     void  add_List (int territory);
     void remote_list ();
-    void Update (state::State& state);
+    void Update (const state::State& state);
   };
 
 };

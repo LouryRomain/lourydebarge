@@ -10,10 +10,14 @@ namespace renderer {
 };
 namespace state {
   class State;
+};
+namespace ihm {
+  class Player;
 }
 
 #include "View.h"
 #include "state/State.h"
+#include "ihm/Player.h"
 
 namespace renderer {
 
@@ -27,10 +31,10 @@ namespace renderer {
     // Operations
   public:
     ~Render ();
-    void init (state::State state_game);
-    void draw (state::State state_game);
+    void init (const state::State state_game);
+    void draw (ihm::Player player);
     Render ();
-    void upDate (state::State state_game);
+    void upDate (const state::State state_game, ihm::Player player);
   };
 
 };

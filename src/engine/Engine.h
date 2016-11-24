@@ -10,25 +10,28 @@ namespace engine {
 };
 namespace state {
   class State;
+};
+namespace ihm {
+  class Player;
 }
 
 #include "Move_unit.h"
+#include "ihm/Player.h"
 
 namespace engine {
 
   /// class Engine - 
   class Engine {
-    // Associations
     // Attributes
   public:
-    engine::Move_unit action;
     std::vector<int> list_gang;
     int round;
+    std::vector<engine::Move_unit> list_action;
     // Operations
   public:
     Engine ();
     ~Engine ();
-    void Update (state::State& state);
+    void Update (state::State& state, ihm::Player player);
   };
 
 };

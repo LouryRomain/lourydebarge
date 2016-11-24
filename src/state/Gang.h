@@ -25,18 +25,18 @@ namespace state {
     Gang ();
     ~Gang ();
     void set_nb_card_gang (int nb_card_gang);
-    int get_nb_card_gang ();
+    int get_nb_card_gang () const;
     void set_money (int money);
-    int get_money ();
+    int get_money () const;
     void set_alive (bool alive);
-    bool get_alive ();
-    std::string get_name ();
+    bool get_alive () const;
+    std::string get_name () const;
     void set_name (std::string name);
     void setListTerritory (std::vector<int> list_territory);
-    std::vector<int> getListTerritory ();
-    int getTurn ();
+    std::vector<int> getListTerritory () const;
+    int getTurn () const;
     void setTurn (int turn);
-    int getAction_done ();
+    int getAction_done () const;
     void setAction_done (int nb);
   };
 

@@ -6,16 +6,15 @@
 #include <vector>
 
 namespace state {
-  class Player;
-  class Territory;
   class ListElement;
   class Gang;
+  class Territory;
+  class State;
 }
 
-#include "Player.h"
-#include "Territory.h"
 #include "ListElement.h"
 #include "Gang.h"
+#include "Territory.h"
 #include "STATE.h"
 
 namespace state {
@@ -24,27 +23,28 @@ namespace state {
   class State {
     // Associations
     // Attributes
-  public:
-    state::Player player;
-    std::vector<state::Territory> list_territory;
   private:
-    int* state;
     std::vector<state::ListElement> list_ListElement;
     std::vector<Gang> list_gang;
+    std::vector<state::Territory> list_territory;
     // Operations
   public:
     State ();
     ~State ();
-    int getState ();
-    void setState (int state);
-    std::vector<ListElement> getListListElement ();
+    std::vector<ListElement> getListListElement () const;
     void add_ListElement (state::ListElement ListElement);
-    std::vector<Gang> getListGang ();
+    std::vector<Gang> getListGang () const;
     void add_Gang (state::Gang& Gang);
     void upDate ();
     void init ();
     void notifier ();
-    std::vector<state::Territory> getlistterritorygang (int gang);
+    std::vector<state::Territory> getlistterritorygang (int gang) const;
+    std::vector<state::Territory> get_list_territory () const;
+    void add_territory (state::Territory territory);
+    state::State clone () const;
+    void set_list_gang (std::vector<state::Gang> list_gang);
+    void set_list_element (std::vector<state::ListElement> list_element);
+    void set_list_territory (std::vector<state::Territory> list_territory);
   };
 
 };

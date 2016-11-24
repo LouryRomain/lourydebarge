@@ -9,18 +9,18 @@
 
 #include "renderer/View.h"
 #include "renderer/Render.h"
-#include "engine/Clavier.h"
-#include "engine/Souris.h"
+#include "ihm/Clavier.h"
+#include "ihm/Souris.h"
 #include "engine/Move_unit.h"
 #include "engine/Engine.h"
 #include "ia/IA.h"
 
 
 state::State state_game;
-engine::Clavier clavier;
-engine::Souris souris;
-engine::Move_unit action(2, 0, 10);
+ihm::Clavier clavier;
+ihm::Souris souris;
 engine::Engine game;
+
 
 int main() {
 
@@ -32,20 +32,20 @@ int main() {
     ia::IA bot(1);
     state::Gang bot1;
     bot1.ID = 1;
+    
+    
+    ihm::Player player;
+    state_game.add_Gang(player.gang);
+    
     state_game.add_Gang(bot1);
-    std::cout << state_game.list_territory.size() << " est le nombre de territoire" << std::endl;
-
-
-    std::cout << state_game.getListListElement().size() << " est le nombre de liste d'element" << std::endl;
-    for (int i = 0; i < state_game.getListListElement().size(); i++)
-        std::cout << state_game.getListListElement()[i].getSize() << " est le nombre d'element dans la liste " << i << std::endl;
-
+   
     int pause = 0;
     int count_pause = 0;
     int count_pause2 = 0;
     int transi = 0;
     while (render.window.isOpen()) {
-        if (state_game.player.gang.getTurn() == 1)
+        player.Update(state_game);
+        if (player.gang.getTurn() == 1)
             souris.Update(render.window);
         sf::Event event;
 
@@ -58,7 +58,7 @@ int main() {
 
 
         for (int i = 0; i < state_game.getListListElement().size(); i++) {
-            state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i], state_game.player, state_game.getState());
+            state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i],player, player.get_state());
         }
 
 
@@ -69,19 +69,17 @@ int main() {
             if (event.type == sf::Event::Closed)
                 render.window.close();
             else if ((event.type == sf::Event::KeyPressed)) {
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)&&(state_game.player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::B);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)&&(state_game.player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Up);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)&&(state_game.player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Down);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)&&(state_game.player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Left);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)&&(state_game.player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Right);
-                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                    bot1.setTurn(1);
-                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)&&(player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::B,player);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)&&(player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Up,player);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)&&(player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Down,player);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)&&(player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Left,player);
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)&&(player.gang.getTurn() == 1))
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Right,player);
+                
             }
         }
 
@@ -92,27 +90,27 @@ int main() {
 
             for (int i = 0; i < state_game.getListListElement().size(); i++)
                 if (state_game.getListListElement()[i].getIdView() == 4) {
-                    delete state_game.player.view_posX;
-                    state_game.player.view_posX = new int;
-                    delete state_game.player.view_posY;
-                    state_game.player.view_posY = new int;
+                    delete player.view_posX;
+                    player.view_posX = new int;
+                    delete player.view_posY;
+                    player.view_posY = new int;
                     if (state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() > state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY())
-                        *state_game.player.view_posY = state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - 300 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()) / 2);
+                        *player.view_posY = state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - 300 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()) / 2);
                     else
-                        *state_game.player.view_posY = state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY() - 300 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()) / 2);
+                        *player.view_posY = state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY() - 300 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosY() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosY()) / 2);
 
                     if (state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() > state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX())
-                        *state_game.player.view_posX = state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - 500 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()) / 2);
+                        *player.view_posX = state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - 500 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()) / 2);
                     else
-                        *state_game.player.view_posX = state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX() - 500 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()) / 2);
+                        *player.view_posX = state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX() - 500 - static_cast<int> (std::abs(state_game.getListListElement()[i].getlist()[bot.action.id_terr_to].getPosX() - state_game.getListListElement()[i].getlist()[bot.action.id_terr_from].getPosX()) / 2);
                 }
             pause = 1;
         }
         if (count_pause > 30) {
             pause = 0;
             count_pause = 0;
-            bot.action.make(state_game);
-
+            bot.action.make(state_game,game.list_action);
+           
             transi = 1;
         }
         if (count_pause2 > 30) {
@@ -123,12 +121,12 @@ int main() {
         }
 
 
-        game.Update(state_game);
+        game.Update(state_game,player);
         state_game.upDate();
         bot.Update(state_game);
 
-        render.upDate(state_game);
-        render.draw(state_game);
+        render.upDate(state_game,player);
+        render.draw(player);
     }
 
     return 0;
