@@ -5,33 +5,34 @@
 #include <vector>
 #include <state/Element.h>
 
-namespace engine {
-  class Move_unit;
-};
 namespace state {
   class State;
 };
 namespace ihm {
   class Player;
+};
+namespace engine {
+  class Fifo;
+  class Command;
 }
 
-#include "Move_unit.h"
 #include "ihm/Player.h"
+#include "Command.h"
 
 namespace engine {
 
   /// class Engine - 
   class Engine {
+    // Associations
     // Attributes
   public:
     std::vector<int> list_gang;
     int round;
-    std::vector<engine::Move_unit> list_action;
     // Operations
   public:
     Engine ();
     ~Engine ();
-    void Update (state::State& state, ihm::Player player);
+    void Update (state::State& state, ihm::Player player, engine::Fifo& fifo);
   };
 
 };

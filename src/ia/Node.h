@@ -4,6 +4,12 @@
 
 
 namespace ia {
+  class MinMax;
+}
+
+#include "MinMax.h"
+
+namespace ia {
 
   /// class Node - 
   class Node {

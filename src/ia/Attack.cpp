@@ -108,7 +108,7 @@ void ia::Attack::init(const state::State& state, int gang) {
             if (state.get_list_territory()[list_territory[i].getAdajcent()[j]].get_gang() != gang)
                 if (list_territory[i].get_nb_unit() > 1)
                     if (list_territory[i].get_nb_unit() > state.get_list_territory()[list_territory[i].getAdajcent()[j]].get_nb_unit()) {
-                        attack = engine::Move_unit(list_territory[i].getAdajcent()[j], list_territory[i].get_ID(), state.get_list_territory()[list_territory[i].getAdajcent()[j]].get_nb_unit() + 1);
+                        attack = engine::Move_unit(list_territory[i].getAdajcent()[j], list_territory[i].get_ID(), (-state.get_list_territory()[list_territory[i].getAdajcent()[j]].get_nb_unit()+list_territory[i].get_nb_unit())/2);
 
                         list_attack.push_back(attack);
                         unit_max_1_to.push_back(init);

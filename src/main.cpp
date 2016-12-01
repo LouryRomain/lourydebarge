@@ -14,36 +14,54 @@
 #include "engine/Move_unit.h"
 #include "engine/Engine.h"
 #include "ia/IA.h"
+#include "state/State.h"
+#include "engine/Fifo.h"
+#include <thread>
+#include <mutex>
 
 
+
+
+/*int thread_1(engine::Engine& game, state::State& state) {
+
+    while (1) {
+        std::lock_guard<std::mutex> lock(mtx);
+        game.run(state_game);
+            std::cout<<"j'update l'etat du joueur"<<std::endl;
+    }
+    return 0;
+}
+*/
+int main() {
 state::State state_game;
 ihm::Clavier clavier;
 ihm::Souris souris;
 engine::Engine game;
+engine::Fifo fifo;
 
 
-int main() {
-
-
-
+   std::thread th1(&engine::Fifo::read,&fifo,std::ref(state_game));
+    engine::Command* commande;
     state_game.init();
     renderer::Render render;
     render.init(state_game);
     ia::IA bot(1);
     state::Gang bot1;
     bot1.ID = 1;
-    
-    
+    engine::Command* command;
+
+
     ihm::Player player;
     state_game.add_Gang(player.gang);
-    
+
     state_game.add_Gang(bot1);
-   
+
     int pause = 0;
     int count_pause = 0;
     int count_pause2 = 0;
     int transi = 0;
     while (render.window.isOpen()) {
+
         player.Update(state_game);
         if (player.gang.getTurn() == 1)
             souris.Update(render.window);
@@ -58,7 +76,7 @@ int main() {
 
 
         for (int i = 0; i < state_game.getListListElement().size(); i++) {
-            state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i],player, player.get_state());
+            state_game.getListListElement()[i] = souris.gestion_souris(state_game.getListListElement()[i], player, player.get_state());
         }
 
 
@@ -70,16 +88,16 @@ int main() {
                 render.window.close();
             else if ((event.type == sf::Event::KeyPressed)) {
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::B)&&(player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::B,player);
+                    clavier.gestion_clavier(state_game, sf::Keyboard::B, player);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)&&(player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Up,player);
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Up, player);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)&&(player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Down,player);
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Down, player);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)&&(player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Left,player);
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Left, player);
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)&&(player.gang.getTurn() == 1))
-                    clavier.gestion_clavier(state_game, sf::Keyboard::Right,player);
-                
+                    clavier.gestion_clavier(state_game, sf::Keyboard::Right, player);
+
             }
         }
 
@@ -109,8 +127,12 @@ int main() {
         if (count_pause > 30) {
             pause = 0;
             count_pause = 0;
-            bot.action.make(state_game,game.list_action);
-           
+            fifo.mutex.lock();
+            commande=new engine::Move_unit(bot.action.id_terr_to,bot.action.id_terr_from,bot.action.nb_unit);
+            fifo.write(state_game,commande);
+            fifo.mutex.unlock();
+            
+
             transi = 1;
         }
         if (count_pause2 > 30) {
@@ -119,14 +141,12 @@ int main() {
             bot1.setAction_done(bot1.getAction_done() + 1);
             bot1.setTurn(1);
         }
-
-
-        game.Update(state_game,player);
-        state_game.upDate();
-        bot.Update(state_game);
-
-        render.upDate(state_game,player);
+        game.Update(state_game, player,fifo);
+        
+        render.upDate(state_game, player);
         render.draw(player);
+   
+        bot.Update(state_game);
     }
 
     return 0;

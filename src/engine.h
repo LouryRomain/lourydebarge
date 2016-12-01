@@ -4,4 +4,6 @@
 
 #include "engine/Move_unit.h"
 #include "engine/Engine.h"
+#include "engine/Command.h"
+#include "engine/Fifo.h"
 #endif

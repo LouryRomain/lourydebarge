@@ -18,7 +18,7 @@ engine::Move_unit::~Move_unit() {
 
 }
 
-void engine::Move_unit::make(state::State& state,std::vector<engine::Move_unit>& list_action) {
+void engine::Move_unit::make(state::State& state) {
 
 
     if (state.get_list_territory()[id_terr_from].get_nb_unit() - nb_unit > 0) {
@@ -40,11 +40,11 @@ void engine::Move_unit::make(state::State& state,std::vector<engine::Move_unit>&
 
     }
     
-    list_action.push_back(*this);
+   
   
 }
 
-void engine::Move_unit::demake(state::State& state,std::vector<engine::Move_unit>& list_action) {
+void engine::Move_unit::demake(state::State& state) {
     
 
     
@@ -63,7 +63,7 @@ void engine::Move_unit::demake(state::State& state,std::vector<engine::Move_unit
         state.get_list_territory()[id_terr_to].old_gang.pop_back();
     }
     
-    list_action.pop_back();
+   
     
     
     }

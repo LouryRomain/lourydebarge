@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "state/State.h"
 #include "Move_unit.h"
+#include "Fifo.h"
 #include <iostream>
 
 int clock_compteur;
@@ -16,10 +17,10 @@ engine::Engine::~Engine() {
 
 }
 
-void engine::Engine::Update(state::State& state,ihm::Player player) {
+void engine::Engine::Update(state::State& state,ihm::Player player,engine::Fifo& fifo) {
     clock_ok++;
     clock_compteur++;
-    engine::Move_unit action;
+    engine::Move_unit* action=new engine::Move_unit() ;
    
     for (int i = 0; i < state.getListListElement().size(); i++) {
         for (int j = 0; j < state.getListListElement()[i].getlist().size(); j++) {
@@ -80,12 +81,14 @@ void engine::Engine::Update(state::State& state,ihm::Player player) {
                                     player.set_chiffre_pris(player.getCompteur());
                                 }
                             } else {
-                                action.nb_unit = player.get_chiffre_pris();
-                                action.id_terr_to = player.tour_cliked->territory;
-                                action.id_terr_from = *player.tour_unit_pris;
-                                 
+                                action->nb_unit = player.get_chiffre_pris();
+                                action->id_terr_to = player.tour_cliked->territory;
+                                action->id_terr_from = *player.tour_unit_pris;
                                 
-                                action.make(state,list_action);
+                                engine::Command* commande=action;
+                                fifo.mutex.lock();
+                                fifo.write(state,commande);
+                                fifo.mutex.unlock();
                                 //std::cout<<"avant "<<state.get_list_territory()[action.id_terr_from].get_nb_unit()<<std::endl;
                                 //action.demake(state);
                                 //std::cout<<"apres "<<state.get_list_territory()[action.id_terr_from].get_nb_unit()<<std::endl;
@@ -220,4 +223,3 @@ if(state.getListGang()[1].get_money()>10){
 
 
 }
-

@@ -22,7 +22,7 @@ void ia::Defence::init(const state::State& state,int gang){
     for(int i=0;i<list_territory.size();i++)
     for ( int j=0;j<list_territory[i].getAdajcent().size();j++)
         if(state.get_list_territory()[list_territory[i].getAdajcent()[j]].get_gang()==gang)
-            if(state.get_list_territory()[list_territory[i].getAdajcent()[j]].get_nb_unit()<list_territory[i].get_nb_unit()){
+            if(1<list_territory[i].get_nb_unit()){
        defence=engine::Move_unit(list_territory[i].getAdajcent()[j],list_territory[i].get_ID(),list_territory[i].get_nb_unit()-1);
         
         

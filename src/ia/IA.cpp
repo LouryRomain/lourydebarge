@@ -10,15 +10,20 @@
 
 ia::IA::IA(int gang) {
     this->gang = gang;
+    
+    
+    
+    
 
 }
 
 ia::IA::~IA() {
 
+ 
 }
 
 void ia::IA::play(const state::State& state) {
-     
+    
   
     
      
@@ -43,7 +48,7 @@ void ia::IA::play(const state::State& state) {
         
 
     ia::MinMax minmax;
-    minmax.create_tree(state,gang,2);
+    minmax.create_tree(state,gang,3);
     int nb_attack=minmax.solve(state,gang,minmax.tree);
  
        action.id_terr_to = list_action[nb_attack].id_terr_to;
@@ -56,7 +61,7 @@ void ia::IA::play(const state::State& state) {
         action.id_terr_from = defence.list_defence[nb_defence].id_terr_from;
         action.nb_unit = defence.list_defence[nb_defence].nb_unit;*/
    // }
-        
+       
 
   
 }

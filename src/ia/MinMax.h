@@ -13,11 +13,15 @@ namespace ia {
 };
 namespace state {
   class State;
+};
+namespace ia {
+  class IA;
 }
 
 #include "engine/Move_unit.h"
 #include "Node.h"
 #include "state/State.h"
+#include "IA.h"
 
 namespace ia {
 
