@@ -1,0 +1,4 @@
+Scanning dependencies of target tdrest
+[100%] Building CXX object CMakeFiles/tdrest.dir/src/main.cpp.o
+Linking CXX executable ../bin/tdrest
+[100%] Built target tdrest

@@ -26,8 +26,13 @@ exec_program(${DIA2CODE} ARGS -d ../src -t cpp -cl State,Fifo,Command,Choice,Nod
 file(GLOB_RECURSE main_sources src/*.cpp)
 
 
+
+# jsoncpp
+include_directories ("${PROJECT_SOURCE_DIR}/extern/jsoncpp-0.10.5/dist")
+file(GLOB jsoncpp_sources "${PROJECT_SOURCE_DIR}/extern/jsoncpp-0.10.5/dist/jsoncpp.cpp")
+
 # Executables
-add_executable(run ${main_sources})
+add_executable(run ${main_sources} ${jsoncpp_sources})
 
 # SFML
 if(WIN32)
@@ -36,7 +41,7 @@ set(CMAKE_MODULE_PATH "${SFML_ROOT}/cmake/Modules" ${CMAKE_MODULE_PATH})
 else(WIN32)
 SET(CMAKE_MODULE_PATH "/usr/share/SFML/cmake/Modules/" ${CMAKE_MODULE_PATH})
 endif(WIN32)
-find_package(SFML 2 COMPONENTS graphics window system)
+find_package(SFML 2 COMPONENTS graphics window system network)
 if(SFML_FOUND)
   include_directories(${SFML_INCLUDE_DIR})
   target_link_libraries(run ${SFML_LIBRARIES})
